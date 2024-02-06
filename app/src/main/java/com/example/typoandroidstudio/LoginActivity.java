@@ -42,8 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()){
                         Datainfo.restLogin=response.body();
                         Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
-                        intent.putExtra("email", email);
-                        intent.putExtra("password", password);
+                        intent.putExtra("user", Datainfo.restLogin.getUser());
                         startActivity(intent);
                     }else {
                         Toast.makeText(LoginActivity.this, "Error al Iniciar Sesion", Toast.LENGTH_SHORT).show();

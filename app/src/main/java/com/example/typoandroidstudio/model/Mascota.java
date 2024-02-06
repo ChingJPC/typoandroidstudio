@@ -8,10 +8,20 @@ public class Mascota {
     private long Edad;
     private String Raza;
     private long Peso;
-    private long Tamaño;
+    private float Tamaño;
     private String Sexo;
 
-    public Mascota(String nombre_mascota, long edad, String raza, long peso, long tamaño, String sexo) {
+    private Tipomascota tipomascota;
+
+    public Tipomascota getTipomascota() {
+        return tipomascota;
+    }
+
+    public void setTipomascota(Tipomascota tipomascota) {
+        this.tipomascota = tipomascota;
+    }
+
+    public Mascota(String nombre_mascota, long edad, String raza, long peso, float tamaño, String sexo) {
         Nombre_Mascota = nombre_mascota;
         Edad = edad;
         Raza = raza;
@@ -20,7 +30,7 @@ public class Mascota {
         Sexo = sexo;
     }
 
-    public Mascota(long id, String nombre_mascota, long edad, String raza, long peso, long tamaño, String sexo) {
+    public Mascota(long id, String nombre_mascota, long edad, String raza, long peso, float tamaño, String sexo) {
         this.id = id;
         Nombre_Mascota = nombre_mascota;
         Edad = edad;
@@ -70,11 +80,11 @@ public class Mascota {
         Peso = peso;
     }
 
-    public long getTamaño() {
+    public float getTamaño() {
         return Tamaño;
     }
 
-    public void setTamaño(long tamaño) {
+    public void setTamaño(float tamaño) {
         Tamaño = tamaño;
     }
 

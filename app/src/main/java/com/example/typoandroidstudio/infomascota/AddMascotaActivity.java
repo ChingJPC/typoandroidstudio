@@ -3,15 +3,21 @@ package com.example.typoandroidstudio.infomascota;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.typoandroidstudio.Datainfo;
 import com.example.typoandroidstudio.R;
 import com.example.typoandroidstudio.model.Mascota;
+import com.example.typoandroidstudio.model.Tipomascota;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIService;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +36,32 @@ public class AddMascotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mascota);
         service = MascotaAPIClient.getMascotaInstance();
+        service.getTipos(Datainfo.restLogin.getToken_type()+" "+
+                Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Tipomascota>>() {
+            @Override
+            public void onResponse(Call<List<Tipomascota>> call, Response<List<Tipomascota>> response) {
+                if (response.isSuccessful()){
+                    cargarspinner(response.body());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<Tipomascota>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void cargarspinner(List<Tipomascota> body) {
+        Spinner caja7 = findViewById(R.id.seletipomascota);
+
+        ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter (
+                this,
+                android.R.layout.simple_expandable_list_item_1,
+                body
+        );
+        caja7.setAdapter(tipomascotaArrayAdapter);
     }
 
     public void click(View view) {

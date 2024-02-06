@@ -1,6 +1,7 @@
 package com.example.typoandroidstudio.network.MascotaAPIS;
 
 import com.example.typoandroidstudio.model.Mascota;
+import com.example.typoandroidstudio.model.Tipomascota;
 
 import java.util.List;
 
@@ -8,20 +9,24 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface MascotaAPIService {
-    @GET("Informacion")
-    Call<List<Mascota>> getAll();
+    @GET("auth/Informacion")
+    Call<List<Mascota>> getAll(@Header("Authorization") String Authorization);
 
-    @GET("Informacion/{id}")
+    @GET("auth/Tipomascota")
+    Call<List<Tipomascota>> getTipos(@Header("Authorization") String Authorization);
+
+    @GET("auth/Informacion/{id}")
     Call<Mascota> get(@Path("id") long id);
 
-    @POST("Informacion")
+    @POST("auth/Informacion")
     Call<Mascota> add(@Body Mascota mascota);
 
-    @DELETE("Informacion/{id}")
+    @DELETE("auth/Informacion/{id}")
     Call<Mascota> delete(@Path("id") long id);
 
     Call<Mascota> edit(@Path("id") long id, @Body Mascota mascota);;

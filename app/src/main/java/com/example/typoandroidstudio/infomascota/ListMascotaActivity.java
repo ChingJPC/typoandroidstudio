@@ -17,6 +17,8 @@ import com.example.typoandroidstudio.adapter.MascotaAdapter;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIService;
+import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
+import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIService;
 
 
 import java.util.List;
@@ -27,9 +29,8 @@ import retrofit2.Response;
 
 public class ListMascotaActivity extends AppCompatActivity {
     ListView listamascota;
-    private LoginAPIService service;
+    private MascotaAPIService service;
     public void regresar (View view){
-        startActivity(new Intent(this, PerfilUserActivity.class));
         finish();
     }
 
@@ -37,7 +38,7 @@ public class ListMascotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_mascota);
-        service= LoginAPIClient.getLoginService();
+        service= MascotaAPIClient.getMascotaInstance();
         listamascota=findViewById(R.id.listamascota);
     }
     @Override
@@ -47,7 +48,7 @@ public class ListMascotaActivity extends AppCompatActivity {
     }
     private void loadData() {
         Log.i("Login", "Load");
-        service.getMascota(Datainfo.restLogin.getToken_type()+" "+
+        service.getAll(Datainfo.restLogin.getToken_type()+" "+
                 Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Mascota>>() {
             @Override
             public void onResponse(Call<List<Mascota>> call, Response<List<Mascota>> response) {
@@ -64,7 +65,7 @@ public class ListMascotaActivity extends AppCompatActivity {
             });
         }
         private void cargarDatos(List<Mascota> mascotas) {
-
+            Log.i("TYPO",mascotas.toString());
             MascotaAdapter datos = new MascotaAdapter(mascotas, this);
             listamascota.setAdapter((ListAdapter) datos);
         }

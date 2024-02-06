@@ -44,7 +44,7 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:text="Sexo"
+        android:text="SEXO"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/txtpeso"
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Tamaño"
+        android:text="TAMAÑO"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtpeso"
@@ -147,7 +147,7 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/textView13"
-        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Peso"
+        android:text="PESO"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/txtraza"
@@ -202,5 +202,29 @@
         app:layout_constraintStart_toStartOf="@+id/btnadd"
         app:layout_constraintTop_toBottomOf="@+id/btnadd"
         app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <Spinner
+        android:id="@+id/seletipomascota"
+        android:layout_width="103dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#0060AE"
+        app:layout_constraintEnd_toEndOf="@+id/txtpeso"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="@+id/txtpeso"
+        app:layout_constraintTop_toBottomOf="@+id/txtpeso" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TIPO MASCOTA"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtpeso"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="@+id/txtpeso"
+        app:layout_constraintTop_toBottomOf="@+id/txtpeso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
