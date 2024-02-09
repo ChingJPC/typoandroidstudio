@@ -5,16 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.example.typoandroidstudio.Datainfo;
-import com.example.typoandroidstudio.PerfilUserActivity;
 import com.example.typoandroidstudio.R;
 import com.example.typoandroidstudio.adapter.MascotaAdapter;
 import com.example.typoandroidstudio.model.Mascota;
@@ -27,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class IndexMascotaActivity extends AddMascotaActivity {
+public class IndexMascotaActivity extends AppCompatActivity {
     public void add(View view) {
         startActivity(new Intent(this, AddMascotaActivity.class));
     }
@@ -86,7 +84,7 @@ public class IndexMascotaActivity extends AddMascotaActivity {
 
             @Override
             public void onFailure(Call<List<Mascota>> call, Throwable t) {
-
+                Log.e("Error", t.getMessage());
             }
         });
     }

@@ -1,7 +1,7 @@
 package com.example.typoandroidstudio.infomascota;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -27,7 +27,6 @@ public class AddMascotaActivity extends AppCompatActivity {
     private MascotaAPIService service;
 
     public void back(View view) {
-        startActivity(new Intent(this, IndexMascotaActivity.class));
         finish();
     }
 
@@ -36,11 +35,21 @@ public class AddMascotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mascota);
         service = MascotaAPIClient.getMascotaInstance();
+        Spinner caja7 = findViewById(R.id.spinner);
+
+        Log.i("Spinner",String.valueOf(caja7));
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         service.getTipos(Datainfo.restLogin.getToken_type()+" "+
                 Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Tipomascota>>() {
             @Override
             public void onResponse(Call<List<Tipomascota>> call, Response<List<Tipomascota>> response) {
                 if (response.isSuccessful()){
+                    //Log.i("Lista", response.body().toString());
                     cargarspinner(response.body());
                 }
             }
@@ -50,18 +59,18 @@ public class AddMascotaActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void cargarspinner(List<Tipomascota> body) {
-        Spinner caja7 = findViewById(R.id.seletipomascota);
-
+        Spinner caja7 = findViewById(R.id.spinner);
+        Log.i("Spinner",String.valueOf(caja7));
         ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter (
                 this,
                 android.R.layout.simple_expandable_list_item_1,
                 body
         );
         caja7.setAdapter(tipomascotaArrayAdapter);
+
     }
 
     public void click(View view) {

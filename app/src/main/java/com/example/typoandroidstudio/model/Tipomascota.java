@@ -24,5 +24,10 @@ public class Tipomascota {
     public void setTipo_Mascota(String tipo_Mascota) {
         Tipo_Mascota = tipo_Mascota;
     }
+
+    @Override
+    public String toString() {
+        return Tipo_Mascota;
+    }
 }
 
