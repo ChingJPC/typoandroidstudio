@@ -83,16 +83,22 @@ public class AddMascotaActivity extends AppCompatActivity {
             String value3 = caja3.getText().toString();
             EditText caja4 = findViewById(R.id.txtpeso);
             String value4 = caja4.getText().toString();
+            EditText caja6 = findViewById(R.id.txtgenero);
+            String value6 = caja6.getText().toString();
             EditText caja5 = findViewById(R.id.txttamaño);
             String value5 = caja5.getText().toString();
-            EditText caja6 = findViewById(R.id.txtsexo);
-            String value6 = caja6.getText().toString();
+
+
 
 
             if (value1.length() > 0) {
                 Mascota nuevaMascota = new Mascota(value1,Integer.parseInt(value2),value3, Integer.parseInt(value4), Integer.parseInt(value5),value6);
-
-                service.add(nuevaMascota).enqueue(new Callback<Mascota>() {
+                nuevaMascota.setUser_id(Datainfo.restLogin.getUser().getId());
+                Spinner spinner = findViewById(R.id.spinner);
+                Tipomascota tipomascota = (Tipomascota) spinner.getItemAtPosition(spinner.getSelectedItemPosition());
+                nuevaMascota.setId_tipomascota(tipomascota.getId());
+                service.add(Datainfo.restLogin.getToken_type()+" "+
+                        Datainfo.restLogin.getAccess_token(),nuevaMascota ).enqueue(new Callback<Mascota>() {
                     @Override
                     public void onResponse(Call<Mascota> call, Response<Mascota> response) {
                         Toast.makeText(AddMascotaActivity.this, "Mascota creada correctamente", Toast.LENGTH_SHORT).show();

@@ -24,7 +24,7 @@ public interface MascotaAPIService {
     Call<Mascota> get(@Path("id") long id);
 
     @POST("auth/Informacion")
-    Call<Mascota> add(@Body Mascota mascota);
+    Call<Mascota> add(@Header("Authorization") String Authorization, @Body Mascota mascota);
 
     @DELETE("auth/Informacion/{id}")
     Call<Mascota> delete(@Path("id") long id);
