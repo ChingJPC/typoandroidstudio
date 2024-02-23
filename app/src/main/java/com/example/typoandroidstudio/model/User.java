@@ -5,12 +5,20 @@ import java.io.Serializable;
 public class User implements Serializable {
     private long id;
     private String name;
+    private String apellido;
+    private String telefono;
+    private String fecha_nacimiento;
     private String email;
+    private String password;
 
-    public User(long id, String name, String email) {
+    public User(long id, String name, String apellido, String telefono, String fecha_nacimiento, String email, String password) {
         this.id = id;
         this.name = name;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.email = email;
+        this.password = password;
     }
 
     public long getId() {
@@ -29,6 +37,30 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -37,12 +69,24 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "RespuestaLogin{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", fecha_nacimiento='" + fecha_nacimiento + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
