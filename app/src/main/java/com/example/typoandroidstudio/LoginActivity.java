@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.typoandroidstudio.infomascota.ListMascotaActivity;
 import com.example.typoandroidstudio.model.RestLogin;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIService;
@@ -20,7 +21,10 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginAPIService service;
-
+    public void next(View view){
+        startActivity(new Intent(this, RegisterActivity.class));
+        finish();
+    }
     public void login(View view) {
         if (view.getId()==R.id.btnlogin) {
 
@@ -42,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()){
                         Datainfo.restLogin=response.body();
                         Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
-                        intent.putExtra("user", Datainfo.restLogin.getUser());
                         startActivity(intent);
                     }else {
                         Toast.makeText(LoginActivity.this, "Error al Iniciar Sesion", Toast.LENGTH_SHORT).show();

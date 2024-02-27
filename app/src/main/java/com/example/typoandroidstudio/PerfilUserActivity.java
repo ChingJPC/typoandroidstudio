@@ -32,7 +32,7 @@ public class PerfilUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_user);
 
-        User user = (User)getIntent().getSerializableExtra("user");
+        User user = Datainfo.restLogin.getUser();
 
         textViewUsername = findViewById(R.id.user);
         textViewUsername.setText(user.getName());
