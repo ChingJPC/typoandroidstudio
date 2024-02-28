@@ -3,6 +3,7 @@ package com.example.typoandroidstudio;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginAPIService service;
+    MediaPlayer Sonido;
     public void next(View view){
         startActivity(new Intent(this, RegisterActivity.class));
         finish();
@@ -70,5 +72,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            Sonido = MediaPlayer.create(this,R.raw.ladridoperro);
+            Sonido.start();
+            //Sonido.setLooping(true);
+        }catch (Exception e){
+            Log.e("Musica",e.getMessage());
+        }
     }
 }

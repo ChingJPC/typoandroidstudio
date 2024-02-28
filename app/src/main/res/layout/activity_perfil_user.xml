@@ -7,16 +7,6 @@
     android:background="#6DC5ED"
     tools:context=".PerfilUserActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="299dp"
-        android:layout_height="246dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logotypo" />
-
     <Button
         android:id="@+id/btnmascota"
         android:layout_width="225dp"
@@ -51,12 +41,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="16dp"
         android:text="TU USUARIO"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        tools:layout_editor_absoluteY="290dp" />
 
     <TextView
         android:id="@+id/user"
