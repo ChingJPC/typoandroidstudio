@@ -1,5 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+   <style name="Baste.theme.typoandroidstudio" parent="Theme.AppCompat">
+
+    <!-- Color negro -->
+    <color name="negro">#000000</color>
+
+    <!-- Color blanco -->
+    <color name="blanco">#FFFFFF</color>
+
+    <!--Color celeste-->
+       <color name="celeste">#06B4FC</color>
+   </style>
 </resources>
