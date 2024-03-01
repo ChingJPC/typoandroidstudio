@@ -7,22 +7,23 @@
         android:title="Home"
         android:icon="@drawable/home"/>
 
+
     <item
-        android:id="@+id/shorts"
-        android:title="Shorts"
-        android:icon="@drawable/ic_baseline_whatshot_24"
+        android:id="@+id/mascotas"
+        android:title="Pets"
+        android:icon="@drawable/iconomascota"
         />
 
     <item
         android:title=""/>
 
     <item
-        android:id="@+id/subscriptions"
-        android:title="Subscriptions"
-        android:icon="@drawable/ic_baseline_subscriptions_24" />
+        android:id="@+id/estadisticas"
+        android:title="Statistics"
+        android:icon="@drawable/estadisticas" />
     <item
-        android:id="@+id/library"
+        android:id="@+id/logros"
         android:title="Library"
-        android:icon="@drawable/ic_baseline_video_library_24" />
+        android:icon="@drawable/logro" />
 
 </menu>
