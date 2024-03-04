@@ -17,6 +17,8 @@ public class Mascota {
 
     private long id_tipomascota;
 
+    private String tiempoTotal ="00:00:00";
+
     public Tipomascota getTipomascota() {
         return tipomascota;
     }
@@ -114,6 +116,14 @@ public class Mascota {
 
     public void setSexo(String sexo) {
         Sexo = sexo;
+    }
+
+    public String getTiempoTotal() {
+        return tiempoTotal;
+    }
+
+    public void setTiempoTotal(String tiempoTotal) {
+        this.tiempoTotal = tiempoTotal;
     }
 
     @NonNull

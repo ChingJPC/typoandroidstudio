@@ -14,17 +14,19 @@
         android:src="@drawable/iconotypo" />
 
     <TextView
+        android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TAKE YOUR PET OUT"
+        android:hint="nombre"
         android:padding="2dp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="typo@factory345.sena.co"
+        android:hint="email"
         android:textSize="14sp" />
 
 </LinearLayout>

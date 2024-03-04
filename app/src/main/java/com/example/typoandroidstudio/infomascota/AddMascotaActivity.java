@@ -64,7 +64,7 @@ public class AddMascotaActivity extends AppCompatActivity {
     private void cargarspinner(List<Tipomascota> body) {
         Spinner caja7 = findViewById(R.id.spinner);
         Log.i("Spinner",String.valueOf(caja7));
-        ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter (
+        ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_expandable_list_item_1,
                 body
@@ -92,7 +92,7 @@ public class AddMascotaActivity extends AppCompatActivity {
 
 
             if (value1.length() > 0) {
-                Mascota nuevaMascota = new Mascota(value1,Integer.parseInt(value2),value3, Integer.parseInt(value4), Integer.parseInt(value5),value6);
+                Mascota nuevaMascota = new Mascota(value1,Integer.parseInt(value2),value3, Integer.parseInt(value4), Float.parseFloat(value5),value6);
                 nuevaMascota.setUser_id(Datainfo.restLogin.getUser().getId());
                 Spinner spinner = findViewById(R.id.spinner);
                 Tipomascota tipomascota = (Tipomascota) spinner.getItemAtPosition(spinner.getSelectedItemPosition());
