@@ -14,6 +14,7 @@ import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
 
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 public class MascotaAdapter extends BaseAdapter {
     private List<Mascota> mascotas;
@@ -58,7 +59,8 @@ public class MascotaAdapter extends BaseAdapter {
         txtEdad.setText(""+ mascota.getEdad());
         txtRaza.setText(mascota.getRaza());
         txtPeso.setText(""+ mascota.getPeso());
-        txtTamaño.setText(""+ mascota.getTamaño());
+        String valueTamaño = String.format("%.2f",mascota.getTamaño());
+        txtTamaño.setText(valueTamaño);
         txtSexo.setText(""+mascota.getSexo());
         return convertView;
     }

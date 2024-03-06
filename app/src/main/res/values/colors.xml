@@ -1,6 +1,4 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-   <style name="Baste.theme.typoandroidstudio" parent="Theme.AppCompat">
-
     <!-- Color negro -->
     <color name="negro">#000000</color>
 
@@ -9,5 +7,4 @@
 
     <!--Color celeste-->
        <color name="celeste">#06B4FC</color>
-   </style>
 </resources>
