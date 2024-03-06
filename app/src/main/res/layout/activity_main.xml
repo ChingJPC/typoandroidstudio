@@ -60,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
+                app:itemIconTint="#06B4FC"
                 android:background="@android:color/transparent"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/bottom_menu" />
@@ -70,7 +71,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/logro"
             app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="40dp"
             android:id="@+id/fab"

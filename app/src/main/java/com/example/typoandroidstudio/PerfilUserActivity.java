@@ -30,7 +30,7 @@ public class PerfilUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_user);
+        setContentView(R.layout.nav_header);
 
         User user = Datainfo.restLogin.getUser();
 

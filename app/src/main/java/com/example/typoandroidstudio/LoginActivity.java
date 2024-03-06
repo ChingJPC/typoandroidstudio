@@ -22,7 +22,6 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginAPIService service;
-    MediaPlayer Sonido;
     public void next(View view){
         startActivity(new Intent(this, RegisterActivity.class));
         finish();
@@ -47,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<RestLogin> call, Response<RestLogin> response) {
                     if (response.isSuccessful()){
                         Datainfo.restLogin=response.body();
-                        Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     }else {
                         Toast.makeText(LoginActivity.this, "Error al Iniciar Sesion", Toast.LENGTH_SHORT).show();
@@ -72,16 +71,5 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        try {
-            Sonido = MediaPlayer.create(this,R.raw.ladridoperro);
-            Sonido.start();
-            //Sonido.setLooping(true);
-        }catch (Exception e){
-            Log.e("Musica",e.getMessage());
-        }
     }
 }

@@ -7,4 +7,6 @@
 
     <!--Color celeste-->
        <color name="celeste">#06B4FC</color>
+
+    <color name="rojo">#FF0000</color>
 </resources>
