@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#75CDF4"
     tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="178dp"
+        android:layout_height="151dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginBottom="732dp"
+        android:rotation="-25"
+        android:rotationX="8"
+        android:rotationY="-21"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/gato" />
 
     <TextView
         android:id="@+id/textView17"
@@ -20,89 +32,112 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <EditText
         android:id="@+id/txtapellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/boton_border_redondo"
         android:ems="10"
         android:hint="Apellidos"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/txtname"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtname"
-        app:layout_constraintTop_toBottomOf="@+id/txtname" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintStart_toEndOf="@+id/txtname"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txttelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:id="@+id/txtname"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/boton_border_redondo"
         android:ems="10"
-        android:hint="Telefono"
+        android:hint="Nombre"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/txtapellido"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtapellido"
-        app:layout_constraintTop_toBottomOf="@+id/txtapellido" />
-
-    <EditText
-        android:id="@+id/txtfecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Fecha de Nacimiento"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/txttelefono"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txttelefono"
-        app:layout_constraintTop_toBottomOf="@+id/txttelefono" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtemail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="364dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/boton_border_redondo"
         android:ems="10"
         android:hint="Email"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/txtfecha"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/txtfecha"
-        app:layout_constraintTop_toBottomOf="@+id/txtfecha" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toEndOf="@+id/txttelefono"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtpassword"
+        android:id="@+id/txttelefono"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/boton_border_redondo"
+        android:ems="10"
+        android:hint="Telefono"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtfecha"
+        android:layout_width="195dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="108dp"
+        android:background="@drawable/boton_border_redondo"
+        android:ems="10"
+        android:hint="Fecha de Nacimiento"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/txtemail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtemail"
-        app:layout_constraintTop_toBottomOf="@+id/txtemail" />
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="executeR"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtpassword"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/txtpassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="732dp"
+        android:text="¿Ya tienes una cuenta?"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="111dp"
         android:layout_height="21dp"
-        android:layout_marginTop="644dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="732dp"
+        android:layout_marginEnd="60dp"
         android:onClick="goLogin"
         android:text="Inicia sesión aquí"
         android:textColor="#15588E"
@@ -110,29 +145,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="644dp"
-        android:text="¿Ya tienes una cuenta?"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="135dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138"
+        app:srcCompat="@drawable/iconotypo" />
+
+    <EditText
+        android:id="@+id/txtpassword"
+        android:layout_width="166dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="536dp"
+        android:background="@drawable/boton_border_redondo"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnregister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#2196F3"
-        android:onClick="executeR"
-        android:text="Register"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/txtpassword"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="@+id/txtpassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
