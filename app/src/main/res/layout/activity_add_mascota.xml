@@ -36,18 +36,6 @@
         app:layout_constraintStart_toStartOf="@+id/txtedad"
         app:layout_constraintTop_toBottomOf="@+id/txtedad" />
 
-    <EditText
-        android:id="@+id/txtgenero"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
@@ -106,6 +94,7 @@
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -224,5 +213,15 @@
         android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/txttamaño"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Spinner
+        android:id="@+id/txtgenero"
+        android:layout_width="116dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

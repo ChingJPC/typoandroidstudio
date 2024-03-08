@@ -3,6 +3,7 @@ package com.example.typoandroidstudio.infomascota;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -39,6 +40,10 @@ public class AddMascotaActivity extends AppCompatActivity {
 
         Log.i("Spinner",String.valueOf(caja7));
 
+        Spinner spinnerSexo = findViewById(R.id.txtgenero);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ArraySexo, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSexo.setAdapter(adapter);
     }
 
     @Override
@@ -83,8 +88,8 @@ public class AddMascotaActivity extends AppCompatActivity {
             String value3 = caja3.getText().toString();
             EditText caja4 = findViewById(R.id.txtpeso);
             String value4 = caja4.getText().toString();
-            EditText caja6 = findViewById(R.id.txtgenero);
-            String value6 = caja6.getText().toString();
+            Spinner spinnerSexo = findViewById(R.id.txtgenero);
+            String value6 = (String) spinnerSexo.getItemAtPosition(spinnerSexo.getSelectedItemPosition());
             EditText caja5 = findViewById(R.id.txttamaño);
             String value5 = caja5.getText().toString();
 

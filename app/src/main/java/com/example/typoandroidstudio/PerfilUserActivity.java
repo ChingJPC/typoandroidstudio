@@ -23,14 +23,13 @@ public class PerfilUserActivity extends AppCompatActivity {
         startActivity(new Intent(this, IndexMascotaActivity.class));
     }
     public void logout(View view){
-        startActivity(new Intent(this,LoginActivity.class));
         finish();
     }
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_header);
+        setContentView(R.layout.activity_main);
 
         User user = Datainfo.restLogin.getUser();
 
