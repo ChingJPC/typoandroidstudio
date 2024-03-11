@@ -23,7 +23,7 @@
         android:icon="@drawable/estadisticas" />
     <item
         android:id="@+id/logros"
-        android:title="Library"
+        android:title="Logros"
         android:icon="@drawable/logro" />
 
 </menu>

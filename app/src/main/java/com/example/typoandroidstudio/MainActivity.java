@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
+import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
+import com.example.typoandroidstudio.infomascota.AddMascotaFragment;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,7 +59,20 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragmentActivity()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
+
+        navigationView.setOnClickListener(item -> {
+            int itemId = item.getId();
+            if (itemId == R.id.nav_home) {
+                replaceFragment(new HomeFragmentActivity());
+            } else if (itemId == R.id.nav_perfil) {
+                replaceFragment(new IndexMascotaFragment());
+            } else if (itemId == R.id.nav_settings) {
+                replaceFragment(new AddMascotaFragment());
+            }
+        });
         replaceFragment(new HomeFragmentActivity());
+
 
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -63,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new HomeFragmentActivity());
             } else if (itemId == R.id.mascotas) {
                 replaceFragment(new IndexMascotaFragment());
+            } else if (itemId == R.id.pets) {
+                replaceFragment(new AddMascotaFragment());
             }
             return true;
         });
@@ -88,17 +108,20 @@ public class MainActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
 
-        LinearLayout videoLayout = dialog.findViewById(R.id.pets);
+        LinearLayout pets = dialog.findViewById(R.id.pets);
         LinearLayout shortsLayout = dialog.findViewById(R.id.agendamiendo);
         LinearLayout liveLayout = dialog.findViewById(R.id.cooming);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-        videoLayout.setOnClickListener(new View.OnClickListener() {
+
+
+        pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this,"Upload a Video is clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AddMascotaActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -108,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this,"Create a short is Clicked",Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -118,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this,"Go live is Clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"¡Create successful!",Toast.LENGTH_SHORT).show();
 
             }
         });
