@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Typoandroidstudio"
         tools:targetApi="31">
         <activity
+            android:name=".agendamiento.AgendamientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -31,7 +34,6 @@
             </intent-filter>
         </activity>
         <activity
-
             android:name=".agendamiento.IndexAgendamientoFragment"
             android:exported="false" />
         <activity

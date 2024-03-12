@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
-import com.example.typoandroidstudio.infomascota.AddMascotaFragment;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_perfil) {
                 replaceFragment(new IndexMascotaFragment());
             } else if (itemId == R.id.nav_settings) {
-                replaceFragment(new AddMascotaFragment());
+                replaceFragment(new IndexMascotaFragment());
             }
         });
         replaceFragment(new HomeFragmentActivity());
@@ -82,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.mascotas) {
                 replaceFragment(new IndexMascotaFragment());
             } else if (itemId == R.id.pets) {
-                replaceFragment(new AddMascotaFragment());
+                Intent intent = new Intent(MainActivity.this, AddMascotaActivity.class);
+                startActivity(intent);
             }
             return true;
         });

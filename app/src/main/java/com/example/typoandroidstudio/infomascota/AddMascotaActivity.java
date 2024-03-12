@@ -1,9 +1,10 @@
 package com.example.typoandroidstudio.infomascota;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -12,7 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.typoandroidstudio.Datainfo;
+import com.example.typoandroidstudio.PerfilUserActivity;
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.RegisterActivity;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
@@ -106,9 +109,14 @@ public class AddMascotaActivity extends AppCompatActivity {
                         Datainfo.restLogin.getAccess_token(),nuevaMascota ).enqueue(new Callback<Mascota>() {
                     @Override
                     public void onResponse(Call<Mascota> call, Response<Mascota> response) {
-                        Toast.makeText(AddMascotaActivity.this, "Mascota creada correctamente", Toast.LENGTH_SHORT).show();
-                        finish();
+                        if (response.isSuccessful()){
+                            Intent intent = new Intent(AddMascotaActivity.this, IndexMascotaFragment.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(AddMascotaActivity.this, "Error al Agregar una Mascota", Toast.LENGTH_SHORT).show();
+                        }
                     }
+
 
                     @Override
                     public void onFailure(Call<Mascota> call, Throwable t) {
