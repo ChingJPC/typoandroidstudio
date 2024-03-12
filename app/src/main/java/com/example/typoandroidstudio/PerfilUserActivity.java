@@ -34,9 +34,8 @@ public class PerfilUserActivity extends AppCompatActivity {
         User user = Datainfo.restLogin.getUser();
 
         textViewUsername = findViewById(R.id.user);
-        //textViewEmail = findViewById(R.id.email);
+        textViewEmail = findViewById(R.id.email);
         textViewUsername.setText(user.getName());
-        //textViewEmail.setText(user.getEmail());
-
+        textViewEmail.setText(user.getEmail());
     }
 }

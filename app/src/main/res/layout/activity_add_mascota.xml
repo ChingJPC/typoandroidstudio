@@ -9,23 +9,11 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="16dp">
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="35dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07"
-        app:srcCompat="@drawable/tucan" />
-
     <EditText
         android:id="@+id/txtnombre"
         android:layout_width="323dp"
         android:layout_height="39dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="204dp"
         android:background="@drawable/boton_border_redondo"
         android:ems="10"
         android:hint="Nombre mascota"
@@ -37,91 +25,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnadd"
+    <EditText
+        android:id="@+id/txttamaño"
         android:layout_width="323dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="644dp"
-        android:backgroundTint="#06B4FC"
-        android:onClick="click"
-        android:text="Add"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnback"
-        android:layout_width="84dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="36dp"
-        android:onClick="back"
-        app:layout_constraintEnd_toEndOf="@+id/btnadd"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/btnadd"
-        app:layout_constraintTop_toBottomOf="@+id/btnadd"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
-
-    <Spinner
-        android:id="@+id/txtgenero"
-        android:layout_width="143dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/boton_border_redondo"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="163dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="492dp"
-        android:text="SEXO"
+        android:ems="10"
+        android:hint="Tamaño"
+        android:inputType="text"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="163dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="492dp"
-        android:text="TIPO MASCOTA"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="143dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/boton_border_redondo"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="@+id/txtpeso"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtpeso"
+        app:layout_constraintTop_toBottomOf="@+id/txtpeso" />
 
     <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="39dp"
-        android:layout_height="51dp"
+        android:id="@+id/imageView15"
+        android:layout_width="77dp"
+        android:layout_height="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644"
-        app:srcCompat="@drawable/iguana" />
+        app:layout_constraintVertical_bias="0.187"
+        app:srcCompat="@drawable/gato2" />
+
+    <EditText
+        android:id="@+id/txtedad"
+        android:layout_width="323dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/boton_border_redondo"
+        android:ems="10"
+        android:hint="Edad Mascota"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txtnombre"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtnombre"
+        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 
     <EditText
         android:id="@+id/txtraza"
@@ -153,38 +100,92 @@
         app:layout_constraintStart_toStartOf="@+id/txtraza"
         app:layout_constraintTop_toBottomOf="@+id/txtraza" />
 
-    <EditText
-        android:id="@+id/txttamaño"
-        android:layout_width="323dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/boton_border_redondo"
-        android:ems="10"
-        android:hint="Tamaño"
-        android:inputType="text"
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="163dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="548dp"
+        android:text="SEXO"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/txtpeso"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtpeso"
-        app:layout_constraintTop_toBottomOf="@+id/txtpeso" />
-
-    <EditText
-        android:id="@+id/txtedad"
-        android:layout_width="323dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/boton_border_redondo"
-        android:ems="10"
-        android:hint="Edad Mascota"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textAllCaps="false"
         android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/txtnombre"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtnombre"
-        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="323dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="712dp"
+        android:backgroundTint="#06B4FC"
+        android:onClick="click"
+        android:text="Add"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="39dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="508dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnadd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@drawable/iguana" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="163dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="548dp"
+        android:text="TIPO MASCOTA"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/boton_border_redondo"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Spinner
+        android:id="@+id/txtgenero"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/boton_border_redondo"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <ImageButton
+        android:id="@+id/btnback"
+        android:layout_width="58dp"
+        android:layout_height="45dp"
+        android:background="#06B4FC"
+        android:onClick="back"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -199,19 +200,19 @@
         app:layout_constraintEnd_toEndOf="@+id/txtnombre"
         app:layout_constraintStart_toStartOf="@+id/txtnombre"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="77dp"
-        android:layout_height="54dp"
+        android:id="@+id/imageView18"
+        android:layout_width="35dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
-        app:srcCompat="@drawable/gato2" />
+        app:layout_constraintVertical_bias="0.114"
+        app:srcCompat="@drawable/tucan" />
 
     <ImageView
         android:id="@+id/imageView17"

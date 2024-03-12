@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".agendamiento.AgendamientoActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Agendamiento:"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btnSeleccionarFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Fecha"
+        android:layout_below="@id/textViewFecha"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiempo asignado a la actividad (en minutos):"
+        android:layout_below="@id/btnSeleccionarFecha"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/editTextTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTiempo"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:inputType="number"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupCumplida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/editTextTiempo"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonSi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sí"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAgregarAgendamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Agendamiento"
+        android:layout_below="@id/radioGroupCumplida"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+</RelativeLayout>

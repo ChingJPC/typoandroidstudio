@@ -109,13 +109,13 @@ public class AddMascotaActivity extends AppCompatActivity {
                         Datainfo.restLogin.getAccess_token(),nuevaMascota ).enqueue(new Callback<Mascota>() {
                     @Override
                     public void onResponse(Call<Mascota> call, Response<Mascota> response) {
-                        if (response.isSuccessful()){
-                            Intent intent = new Intent(AddMascotaActivity.this, IndexMascotaFragment.class);
-                            startActivity(intent);
-                        }else {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(AddMascotaActivity.this, "Mascota Agregada Correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
                             Toast.makeText(AddMascotaActivity.this, "Error al Agregar una Mascota", Toast.LENGTH_SHORT).show();
                         }
                     }
+
 
 
                     @Override

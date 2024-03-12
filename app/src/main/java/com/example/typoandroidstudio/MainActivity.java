@@ -16,10 +16,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.typoandroidstudio.agendamiento.AgendamientoActivity;
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
@@ -43,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+        View linear = navigationView.getHeaderView(0);
+
+        TextView txtUser = linear.findViewById(R.id.user);
+        String fullName = Datainfo.restLogin.getUser().getName() + " " +
+                Datainfo.restLogin.getUser().getApellido();
+        txtUser.setText(fullName);
+
+        TextView txtEmail = linear.findViewById(R.id.email);
+        txtEmail.setText(Datainfo.restLogin.getUser().getEmail());
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,32 +73,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        navigationView.setOnClickListener(item -> {
-            int itemId = item.getId();
-            if (itemId == R.id.nav_home) {
-                replaceFragment(new HomeFragmentActivity());
-            } else if (itemId == R.id.nav_perfil) {
-                replaceFragment(new IndexMascotaFragment());
-            } else if (itemId == R.id.nav_settings) {
-                replaceFragment(new IndexMascotaFragment());
+        /*navigationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    int itemId = v.getId();
+                    if (itemId == R.id.nav_home) {
+                        replaceFragment(new HomeFragmentActivity());
+                    } else if (itemId == R.id.nav_perfil) {
+                        replaceFragment(new IndexMascotaFragment());
+                    } else if (itemId == R.id.nav_settings) {
+                        replaceFragment(new IndexMascotaFragment());
+                    }
             }
-        });
-        replaceFragment(new HomeFragmentActivity());
-
+        });*/
 
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
+            // Funciones de la barra
             if (itemId == R.id.home) {
                 replaceFragment(new HomeFragmentActivity());
             } else if (itemId == R.id.mascotas) {
                 replaceFragment(new IndexMascotaFragment());
+
+                // Funciones boton mas
             } else if (itemId == R.id.pets) {
                 Intent intent = new Intent(MainActivity.this, AddMascotaActivity.class);
+                startActivity(intent);
+            } else if (itemId == R.id.agendamiendo) {
+                Intent intent = new Intent(MainActivity.this, AgendamientoActivity.class);
                 startActivity(intent);
             }
             return true;
         });
+
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -125,12 +147,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+            //Agendamiento
         shortsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-
+                Intent intent = new Intent(MainActivity.this, AgendamientoActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -159,5 +183,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
+
+
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
 import com.example.typoandroidstudio.model.RestLogin;
 import com.example.typoandroidstudio.model.User;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
@@ -24,11 +25,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        service= LoginAPIClient.getLoginService();
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
+        service= LoginAPIClient.getLoginService();
     }
 
 
@@ -80,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(Call<RestLogin> call, Response<RestLogin> response) {
                     if (response.isSuccessful()){
                         Datainfo.restLogin=response.body();
-                        Intent intent = new Intent(RegisterActivity.this, PerfilUserActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);
                     }else {
                         Toast.makeText(RegisterActivity.this, "Error al Registrarse", Toast.LENGTH_SHORT).show();
