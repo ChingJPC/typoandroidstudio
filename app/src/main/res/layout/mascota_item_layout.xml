@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#75CDF4">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/textnombre"
@@ -55,7 +54,7 @@
         android:layout_width="89dp"
         android:layout_height="24dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="308dp"
+        android:layout_marginEnd="304dp"
         android:text="Edad:"
         android:textSize="20sp"
         android:textStyle="bold"
