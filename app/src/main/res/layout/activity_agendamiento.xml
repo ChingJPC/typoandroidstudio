@@ -1,77 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".agendamiento.AgendamientoActivity">
 
     <TextView
-        android:id="@+id/textViewFecha"
+        android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fecha de Agendamiento:"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="20dp"
-        android:textSize="20sp"/>
-
-    <Button
-        android:id="@+id/btnSeleccionarFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar Fecha"
-        android:layout_below="@id/textViewFecha"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginTop="16dp"
+        android:text="Seleccionar hora"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTiempo"
+        android:id="@+id/txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tiempo asignado a la actividad (en minutos):"
-        android:layout_below="@id/btnSeleccionarFecha"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/editTextTiempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewTiempo"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:inputType="number"/>
-
-    <RadioGroup
-        android:id="@+id/radioGroupCumplida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/editTextTiempo"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp">
-
-        <RadioButton
-            android:id="@+id/radioButtonSi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sí"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/radioButtonNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No"/>
-    </RadioGroup>
+        android:layout_marginTop="100dp"
+        android:text="Seleccionar fecha"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnhora"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="@+id/btnhora"
+        app:layout_constraintTop_toBottomOf="@+id/btnhora" />
 
     <Button
-        android:id="@+id/btnAgregarAgendamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar Agendamiento"
-        android:layout_below="@id/radioGroupCumplida"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"/>
+        android:id="@+id/btnfecha"
+        android:layout_width="109dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="104dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/txt2"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="@+id/txt2"
+        app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnhora"
+        android:layout_width="104dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/txt"
+        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintStart_toStartOf="@+id/txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt" />
+
+    <Spinner
+        android:id="@+id/spinnerMascotas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnfecha" />
+
+    <Button
+        android:id="@+id/btnguardar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerActividades" />
+
+    <Spinner
+        android:id="@+id/spinnerActividades"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMascotas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

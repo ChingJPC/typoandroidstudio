@@ -1,8 +1,11 @@
 package com.example.typoandroidstudio;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,11 +15,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,11 +34,14 @@ import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-public class MainActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity  {
 
     FloatingActionButton fab;
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
+    NavigationView navigationView;
 
 
     @Override
@@ -44,9 +52,30 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fab = findViewById(R.id.fab);
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
 
         View linear = navigationView.getHeaderView(0);
+
+        navigationView.bringToFront();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId()==R.id.nav_perfil) {
+                    Intent intent = new Intent(MainActivity.this, PerfilUserActivity.class);
+                    startActivity(intent);
+
+                } else if (menuItem.getItemId()==R.id.nav_settings){
+                    replaceFragment(new IndexMascotaFragment());
+
+                }
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
+
 
         TextView txtUser = linear.findViewById(R.id.user);
         String fullName = Datainfo.restLogin.getUser().getName() + " " +
@@ -55,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView txtEmail = linear.findViewById(R.id.email);
         txtEmail.setText(Datainfo.restLogin.getUser().getEmail());
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,19 +101,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        /*navigationView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    int itemId = v.getId();
-                    if (itemId == R.id.nav_home) {
-                        replaceFragment(new HomeFragmentActivity());
-                    } else if (itemId == R.id.nav_perfil) {
-                        replaceFragment(new IndexMascotaFragment());
-                    } else if (itemId == R.id.nav_settings) {
-                        replaceFragment(new IndexMascotaFragment());
-                    }
-            }
-        });*/
 
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -106,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
 
 
 
@@ -183,7 +199,5 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
-
-
 
 }

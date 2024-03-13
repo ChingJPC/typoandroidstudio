@@ -1,5 +1,6 @@
 package com.example.typoandroidstudio.agendamiento;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -8,14 +9,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.typoandroidstudio.R;
 
@@ -25,81 +23,68 @@ import java.util.Locale;
 
 public class AgendamientoActivity extends AppCompatActivity {
 
-    private TextView textViewFecha;
-    private Button btnSeleccionarFecha;
-    private TextView textViewTiempo;
-    private EditText editTextTiempo;
-    private RadioGroup radioGroupCumplida;
-    private Button btnAgregarAgendamiento;
+    private TextView btnhora, btnfecha;
+    private Spinner spinnerMascotas, spinnerActividades;
+    private Button btnguardar;
     private int hora = 0;
     private int minuto = 0;
-    private Calendar fechaAgendamiento;
+    //private Calendar fechaAgendamiento;
 
-    @Override
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agendamiento);
+        setContentView(R.layout.activity_main);
 
-        textViewFecha = findViewById(R.id.textViewFecha);
-        btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFecha);
-        textViewTiempo = findViewById(R.id.textViewTiempo);
-        editTextTiempo = findViewById(R.id.editTextTiempo);
-        radioGroupCumplida = findViewById(R.id.radioGroupCumplida);
-        btnAgregarAgendamiento = findViewById(R.id.btnAgregarAgendamiento);
+        btnhora = findViewById(R.id.btnhora);
+        btnfecha = findViewById(R.id.btnfecha);
+        spinnerMascotas = findViewById(R.id.spinnerMascotas);
+        spinnerActividades = findViewById(R.id.spinnerActividades);
+        btnguardar = findViewById(R.id.btnguardar);
 
-        fechaAgendamiento = Calendar.getInstance();
-
-        btnSeleccionarFecha.setOnClickListener(new View.OnClickListener() {
+        btnhora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarTimePicker();
+                mostrarTimePickerDialog();
             }
         });
 
-        btnAgregarAgendamiento.setOnClickListener(new View.OnClickListener() {
+        btnfecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertarAgendamiento();
+                mostrarDatePickerDialog();
+            }
+        });
+
+        // Aquí debes cargar las mascotas y actividades en los spinners
+        cargarMascotas();
+        cargarActividades();
+
+        btnguardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guardarActividad();
             }
         });
     }
 
-    private void mostrarDatePicker() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaAgendamiento.set(year, month, dayOfMonth);
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                        textViewFecha.setText(dateFormat.format(fechaAgendamiento.getTime()));
-                    }
-                },
-                fechaAgendamiento.get(Calendar.YEAR),
-                fechaAgendamiento.get(Calendar.MONTH),
-                fechaAgendamiento.get(Calendar.DAY_OF_MONTH)
-        );
-        datePickerDialog.show();
+    private void mostrarTimePickerDialog() {
+        // Implementar lógica para mostrar el TimePickerDialog y actualizar el TextView
     }
 
-    private void mostrarTimePicker() {
-
-        TimePickerDialog timePickerDialog = new TimePickerDialog(
-                this, new TimePickerDialog.OnTimeSetListener(){
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                TextView editTextTiempo = findViewById(R.id.textViewTiempo);
-                editTextTiempo.setText(String.format("%02d:%02d", hourOfDay, minute));
-            }
-        },
-                hora,minuto,false
-        );
-        timePickerDialog.show();
+    private void mostrarDatePickerDialog() {
+        // Implementar lógica para mostrar el DatePickerDialog y actualizar el TextView
     }
 
-    private void insertarAgendamiento() {
-        int tiempoAsignado = Integer.parseInt(editTextTiempo.getText().toString());
-        boolean cumplida = radioGroupCumplida.getCheckedRadioButtonId() == R.id.radioButtonSi;
-        finish();
+    private void cargarMascotas() {
+        // Implementar lógica para cargar las mascotas desde la base de datos y mostrarlas en el spinner
+    }
+
+    private void cargarActividades() {
+        // Implementar lógica para cargar las actividades desde la base de datos y mostrarlas en el spinner
+    }
+
+    private void guardarActividad() {
+        // Implementar lógica para guardar la actividad en la base de datos
     }
 }
+
