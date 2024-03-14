@@ -1,6 +1,5 @@
 package com.example.typoandroidstudio.infomascota;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.typoandroidstudio.Datainfo;
-import com.example.typoandroidstudio.PerfilUserActivity;
 import com.example.typoandroidstudio.R;
-import com.example.typoandroidstudio.RegisterActivity;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
