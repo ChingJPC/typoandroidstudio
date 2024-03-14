@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintTop_toTopOf="@+id/textViewTiempoLabel"
+    app:layout_constraintBottom_toBottomOf="@+id/textViewTiempoLabel"
+    app:layout_constraintEnd_toEndOf="parent"
     tools:context=".agendamiento.AgendamientoActivity">
 
     <TextView
@@ -22,7 +25,7 @@
         android:id="@+id/txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="56dp"
         android:text="Seleccionar fecha"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -35,10 +38,10 @@
         android:id="@+id/btnfecha"
         android:layout_width="109dp"
         android:layout_height="44dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="96dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="@+id/txt2"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/txt2"
         app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
@@ -46,10 +49,10 @@
         android:id="@+id/btnhora"
         android:layout_width="104dp"
         android:layout_height="41dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="96dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="@+id/txt"
-        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/txt"
         app:layout_constraintTop_toBottomOf="@+id/txt" />
 
@@ -83,6 +86,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerMascotas" />
+
+
+    <TextView
+        android:id="@+id/textViewTiempoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiempo:"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="53dp" />
+
+    <EditText
+        android:id="@+id/editTextTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/textViewTiempoLabel"
+        android:layout_toEndOf="@id/textViewTiempoLabel"
+        android:inputType="time"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="72dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
