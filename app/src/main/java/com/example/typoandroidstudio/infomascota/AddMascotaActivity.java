@@ -26,6 +26,7 @@ import retrofit2.Response;
 
 public class AddMascotaActivity extends AppCompatActivity {
     private MascotaAPIService service;
+    private Mascota mascotaSeleccionada;
 
     public void back(View view) {
         finish();
@@ -49,7 +50,7 @@ public class AddMascotaActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        service.getTipos(Datainfo.restLogin.getToken_type()+" "+
+        service.getTipos(mascotaSeleccionada.getId_tipomascota(), Datainfo.restLogin.getToken_type()+" "+
                 Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Tipomascota>>() {
             @Override
             public void onResponse(Call<List<Tipomascota>> call, Response<List<Tipomascota>> response) {
@@ -65,6 +66,7 @@ public class AddMascotaActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void cargarspinner(List<Tipomascota> body) {
         Spinner caja7 = findViewById(R.id.spinner);

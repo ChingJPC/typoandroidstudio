@@ -16,15 +16,7 @@ public class PerfilUserActivity extends AppCompatActivity {
 
     TextView textViewUsername;
     TextView textViewEmail;
-    public void next(View view){
-        startActivity(new Intent(this, ListMascotaActivity.class));
-    }
-    public void next2(View view){
-        startActivity(new Intent(this, IndexMascotaActivity.class));
-    }
-    public void logout(View view){
-        finish();
-    }
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +26,8 @@ public class PerfilUserActivity extends AppCompatActivity {
         User user = Datainfo.restLogin.getUser();
 
         textViewUsername = findViewById(R.id.user);
-        //textViewEmail = findViewById(R.id.email);
+        textViewEmail = findViewById(R.id.email);
         textViewUsername.setText(user.getName());
-        //textViewEmail.setText(user.getEmail());
+        textViewEmail.setText(user.getEmail());
     }
 }

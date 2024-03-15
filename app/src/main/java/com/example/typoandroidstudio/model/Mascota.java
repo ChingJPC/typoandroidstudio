@@ -2,6 +2,9 @@ package com.example.typoandroidstudio.model;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mascota {
     private long id;
     private String Nombre_Mascota;
@@ -18,6 +21,23 @@ public class Mascota {
     private long id_tipomascota;
 
     private String tiempo_total ="00:00:00";
+
+    private List<Actividad> actividades;
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+
+    public void addActividad(Actividad actividad) {
+        if (actividades == null) {
+            actividades = new ArrayList<>();
+        }
+        actividades.add(actividad);
+    }
 
     public Tipomascota getTipomascota() {
         return tipomascota;

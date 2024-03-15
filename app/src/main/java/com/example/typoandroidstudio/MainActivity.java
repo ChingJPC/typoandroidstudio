@@ -62,13 +62,16 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId()==R.id.nav_perfil) {
-                    Intent intent = new Intent(MainActivity.this, PerfilUserActivity.class);
-                    startActivity(intent);
+                    replaceFragment(new PerfilUserFragment());
 
-                } else if (menuItem.getItemId()==R.id.nav_settings){
+                }else if (menuItem.getItemId()==R.id.nav_home) {
+                    replaceFragment(new HomeFragmentActivity());
+
+                }else if (menuItem.getItemId()==R.id.nav_settings){
                     replaceFragment(new IndexMascotaFragment());
 
                 }
+
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

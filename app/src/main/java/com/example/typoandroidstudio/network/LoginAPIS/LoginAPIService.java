@@ -29,6 +29,15 @@ import retrofit2.http.POST;
                             @Field("email") String email,
                             @Field("password") String password);
         @GET("auth/Informacion")
-        Call<List<Mascota>> getMascota(@Header("Authorization")String auth);
+        Call<List<Mascota>> getMascota(@Header("")String auth);
+
+        @POST ("auth/api/users/{id}")
+        Call<User> updateProfile(
+                @Header("Authorization") String auth,
+                @Field("name") String name,
+                @Field("apellido") String apellido,
+                @Field("telefono") String telefono,
+                @Field("fecha_nacimiento") String fecha_nacimiento
+        );
     }
 
