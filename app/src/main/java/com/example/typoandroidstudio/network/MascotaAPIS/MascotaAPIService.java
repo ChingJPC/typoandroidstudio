@@ -6,9 +6,11 @@ import com.example.typoandroidstudio.model.Tipomascota;
 
 import java.util.List;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -18,11 +20,13 @@ import retrofit2.http.Query;
 public interface MascotaAPIService {
     @GET("auth/Informacion")
     Call<List<Mascota>> getAll(@Header("Authorization") String Authorization);
-    @GET("auth/Actividad")
-    Call<List<Actividad>> getActividad(@Query("id") long id, @Header("Authorization") String Authorization);
+    @GET("auth/obtenerActividadesMascota/{id}")
+    Call<List<Actividad>> getActividad(@Path("id") long id, @Header("Authorization") String Authorization);
+    @POST("auth/Agendamiento")
+    Call<Actividad> addActividad(@Body RequestBody body, @Header("Authorization") String Authorization);
 
     @GET("auth/Tipomascota")
-    Call<List<Tipomascota>> getTipos(@Query("id")long id, @Header("Authorization") String Authorization);
+    Call<List<Tipomascota>> getTipos(@Header("Authorization") String Authorization);
 
     @GET("auth/Informacion/{id}")
     Call<Mascota> get(@Path("id") long id);

@@ -50,25 +50,27 @@ public class AddMascotaActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        service.getTipos(mascotaSeleccionada.getId_tipomascota(), Datainfo.restLogin.getToken_type()+" "+
-                Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Tipomascota>>() {
-            @Override
-            public void onResponse(Call<List<Tipomascota>> call, Response<List<Tipomascota>> response) {
-                if (response.isSuccessful()){
-                    //Log.i("Lista", response.body().toString());
-                    cargarspinner(response.body());
+            service.getTipos( Datainfo.restLogin.getToken_type() + " " +
+                    Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Tipomascota>>() {
+                @Override
+                public void onResponse(Call<List<Tipomascota>> call, Response<List<Tipomascota>> response) {
+                    if (response.isSuccessful()) {
+                        cargarspinner(response.body());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Tipomascota>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<List<Tipomascota>> call, Throwable t) {
+                    // Manejo del error
+                }
+            });
 
-            }
-        });
-    }
+        }
+
 
 
     private void cargarspinner(List<Tipomascota> body) {
+        Log.e("TAG", "tipomascota");
         Spinner caja7 = findViewById(R.id.spinner);
         Log.i("Spinner",String.valueOf(caja7));
         ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter<>(

@@ -62,9 +62,8 @@ public class PerfilUserFragment extends Fragment {
             }
         });
 
-        // Inicializar service con una instancia de LoginAPIService (por ejemplo, utilizando Retrofit)
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://tu_url_api.com/")
+                .baseUrl("URL")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
