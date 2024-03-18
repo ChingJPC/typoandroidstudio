@@ -48,7 +48,7 @@ public class AgendamientoActivity extends AppCompatActivity {
     MascotaAPIService service;
     private ImageButton btnhora, btnfecha;
     private Button btnguardar;
-    private Spinner spinnerMascotas, spinnerActividades;
+    private Spinner spinnerMascotas, spinnerActividades, spinnerTiempo;
     private TextView textViewTiempo, textViewFecha;
     private int hora = 0;
     private int minuto = 0;
@@ -61,14 +61,12 @@ public class AgendamientoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_agendamiento);
 
         // Inicialización de los elementos de la interfaz
-        btnhora = findViewById(R.id.btnhora);
         btnfecha = findViewById(R.id.btnfecha);
         spinnerMascotas = findViewById(R.id.spinnerMascotas);
         spinnerActividades = findViewById(R.id.spinnerActividades);
         btnguardar = findViewById(R.id.btnguardar);
-
         textViewFecha = findViewById(R.id.textViewFecha);
-        textViewTiempo = findViewById(R.id.textViewTiempo);
+        spinnerTiempo = findViewById(R.id.spinnerTiempo);
         fechaAgendamiento = Calendar.getInstance();
 
         // Obtención de referencias a los spinners
@@ -76,22 +74,24 @@ public class AgendamientoActivity extends AppCompatActivity {
         Log.i("Spinner", String.valueOf(caja1));
         Spinner caja2 = findViewById(R.id.spinnerActividades);
         Log.i("Spinner", String.valueOf(caja2));
+        Spinner caja3 = findViewById(R.id.spinnerTiempo);
+        Log.i("Spinner",String.valueOf(caja3));
+
+        Spinner spinnerTiempo = findViewById(R.id.spinnerTiempo);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ArrayTiempo, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTiempo.setAdapter(adapter);
+    }
 
         // Inicialización del servicio para obtener datos de la API
         service = MascotaAPIClient.getMascotaInstance();
 
         // Configuración de listeners para botones y spinners
-        btnhora.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarTimePickerDialog();
-            }
-        });
 
         btnfecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarDatePickerDialog();
+                mostrarDateTimePickerDialog();
             }
         });
 
@@ -200,7 +200,7 @@ public class AgendamientoActivity extends AppCompatActivity {
     }
 
     // Método para mostrar el diálogo de selección de hora
-    private void mostrarTimePickerDialog() {
+    /*private void mostrarTimePickerDialog() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 this, new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -212,26 +212,59 @@ public class AgendamientoActivity extends AppCompatActivity {
                 hora, minuto, false
         );
         timePickerDialog.show();
-    }
+    }*/
 
     // Método para mostrar el diálogo de selección de fecha
-    private void mostrarDatePickerDialog() {
+    private void mostrarDateTimePickerDialog() {
+        // Obtener la fecha y hora actuales
+        Calendar calendarioActual = Calendar.getInstance();
+        int añoActual = calendarioActual.get(Calendar.YEAR);
+        int mesActual = calendarioActual.get(Calendar.MONTH);
+        int diaActual = calendarioActual.get(Calendar.DAY_OF_MONTH);
+        int horaActual = calendarioActual.get(Calendar.HOUR_OF_DAY);
+        int minutoActual = calendarioActual.get(Calendar.MINUTE);
+
+        // Mostrar el diálogo de selección de fecha y hora
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaAgendamiento.set(year, month, dayOfMonth);
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                        textViewFecha.setText(dateFormat.format(fechaAgendamiento.getTime()));
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                                AgendamientoActivity.this,
+                                new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                                        // Combinar la fecha y la hora seleccionadas
+                                        Calendar fechaSeleccionada = Calendar.getInstance();
+                                        fechaSeleccionada.set(year, month, dayOfMonth, hourOfDay, minute);
+
+                                        // Validar que la fecha seleccionada sea a partir de hoy
+                                        if (fechaSeleccionada.compareTo(calendarioActual) >= 0) {
+                                            // La fecha seleccionada es válida
+                                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+                                            textViewFecha.setText(dateFormat.format(fechaSeleccionada.getTime()));
+                                        } else {
+                                            // Mostrar un mensaje de error
+                                            Toast.makeText(AgendamientoActivity.this, "Selecciona una fecha y hora a partir de hoy", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                },
+                                horaActual, minutoActual, true
+                        );
+                        timePickerDialog.show();
                     }
                 },
-                fechaAgendamiento.get(Calendar.YEAR),
-                fechaAgendamiento.get(Calendar.MONTH),
-                fechaAgendamiento.get(Calendar.DAY_OF_MONTH)
+                añoActual, mesActual, diaActual
         );
+
+        // Establecer la fecha mínima seleccionable como hoy
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
         datePickerDialog.show();
     }
+
+
 
     private void guardarActividad() {
         // Obtener la mascota seleccionada

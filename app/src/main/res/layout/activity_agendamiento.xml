@@ -10,10 +10,10 @@
     tools:context=".agendamiento.AgendamientoActivity">
 
 
-    <TextView
-        android:id="@+id/textViewTiempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerTiempo"
+        android:layout_width="132dp"
+        android:layout_height="25dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/border_textview"
         android:textAlignment="center"
@@ -23,20 +23,6 @@
         app:layout_constraintEnd_toEndOf="@+id/txt"
         app:layout_constraintStart_toStartOf="@+id/txt"
         app:layout_constraintTop_toBottomOf="@+id/txt" />
-
-    <TextView
-        android:id="@+id/textViewFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border_textview"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/txt2"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="@+id/txt2"
-        app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
     <TextView
         android:id="@+id/textView8"
@@ -52,28 +38,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.103" />
-
-    <Spinner
-        android:id="@+id/spinnerActividades"
-        android:layout_width="249dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border_textview"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <Spinner
-        android:id="@+id/spinnerMascotas"
-        android:layout_width="249dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/border_textview"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <Button
         android:id="@+id/btnguardar"
@@ -93,7 +57,7 @@
         android:id="@+id/txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="80dp"
         android:text="Seleccionar fecha"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -104,17 +68,30 @@
         app:layout_constraintTop_toBottomOf="@+id/txt" />
 
     <ImageButton
-        android:id="@+id/btnhora"
-        android:layout_width="38dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/hora"
+        android:id="@+id/btnfecha"
+        android:layout_width="37dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/fecha"
         android:backgroundTint="#06B4FC"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTiempo"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="@+id/textViewTiempo"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTiempo" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewFecha"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/textViewFecha"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFecha" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="132dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/border_textview"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt2"
+        app:layout_constraintStart_toStartOf="@+id/txt2"
+        app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
     <TextView
         android:id="@+id/txt"
@@ -130,24 +107,46 @@
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnfecha"
-        android:layout_width="37dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/fecha"
-        android:backgroundTint="#06B4FC"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/textViewFecha"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="@+id/textViewFecha"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFecha" />
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="420dp"
+        android:text="Seleccioanar Mascota"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnfecha"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/btnfecha"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerActividades"
+        android:layout_width="249dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_textview"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <Spinner
+        android:id="@+id/spinnerMascotas"
+        android:layout_width="249dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/border_textview"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Seleccionar Actividad"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -155,19 +154,6 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/spinnerMascotas"
         app:layout_constraintTop_toBottomOf="@+id/spinnerMascotas" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
-        android:text="Seleccioanar Mascota"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnfecha"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="@+id/btnfecha"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"

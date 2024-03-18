@@ -13,8 +13,10 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
-    public interface LoginAPIService {
+public interface LoginAPIService {
         @FormUrlEncoded
         @POST("auth/login")
         Call<RestLogin> login(@Field("email")String email,
@@ -31,9 +33,11 @@ import retrofit2.http.POST;
         @GET("auth/Informacion")
         Call<List<Mascota>> getMascota(@Header("")String auth);
 
-        @POST ("auth/api/users/{id}")
+        @FormUrlEncoded
+        @PUT("auth/api/users/{id}")
         Call<User> updateProfile(
                 @Header("Authorization") String auth,
+                @Path("id") long id,
                 @Field("name") String name,
                 @Field("apellido") String apellido,
                 @Field("telefono") String telefono,

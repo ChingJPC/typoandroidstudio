@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.typoandroidstudio.model.User;
+import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIService;
 
 import retrofit2.Call;
@@ -39,6 +40,7 @@ public class PerfilUserFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_user, container, false);
 
+        service=LoginAPIClient.getLoginService();
         editTextUsername = view.findViewById(R.id.user);
         editTextApellido = view.findViewById(R.id.apellido);
         editTextTelefono = view.findViewById(R.id.numero);
@@ -61,14 +63,6 @@ public class PerfilUserFragment extends Fragment {
                 guardarCambios();
             }
         });
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("URL")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        service = retrofit.create(LoginAPIService.class);
-
         return view;
     }
 
@@ -84,7 +78,7 @@ public class PerfilUserFragment extends Fragment {
         user.setFecha_nacimiento(fecha_nacimiento);
 
         // Llamar al servicio API para actualizar los datos del usuario
-        Call<User> call = service.updateProfile("Bearer " + auth, name, apellido, telefono, fecha_nacimiento);
+        Call<User> call = service.updateProfile("Bearer " + auth, user.getId(), name, apellido, telefono, fecha_nacimiento);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
