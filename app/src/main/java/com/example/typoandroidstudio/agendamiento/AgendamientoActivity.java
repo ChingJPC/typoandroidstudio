@@ -3,6 +3,7 @@ package com.example.typoandroidstudio.agendamiento;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.typoandroidstudio.Datainfo;
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.RegisterActivity;
 import com.example.typoandroidstudio.model.Actividad;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
@@ -39,9 +42,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AgendamientoActivity extends AppCompatActivity {
+    public void back(View view){
+        finish();
+    }
     MascotaAPIService service;
-    private Button btnhora;
-    private Button btnfecha;
+    private ImageButton btnhora, btnfecha;
     private Button btnguardar;
     private Spinner spinnerMascotas, spinnerActividades;
     private TextView textViewTiempo, textViewFecha;

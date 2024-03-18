@@ -19,6 +19,7 @@
         android:ems="10"
         android:hint="Ingresa tu Usuario"
         android:inputType="text"
+        android:isScrollContainer="false"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
