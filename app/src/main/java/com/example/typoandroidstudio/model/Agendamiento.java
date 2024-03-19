@@ -1,12 +1,41 @@
 package com.example.typoandroidstudio.model;
 
 public class Agendamiento {
+    private long id;
     private String tiempo_asignado_actividad;
     private String Fecha_Agendamiento;
     private boolean cumplida;
     private long infoMascota_id;
     private long actividad_id;
     private long user_id;
+    private String nombre_actividad;
+
+    public Agendamiento(long id, String tiempo_asignado_actividad, String fecha_Agendamiento, boolean cumplida, long infoMascota_id, long actividad_id, long user_id) {
+        this.id = id;
+        this.tiempo_asignado_actividad = tiempo_asignado_actividad;
+        Fecha_Agendamiento = fecha_Agendamiento;
+        this.cumplida = cumplida;
+        this.infoMascota_id = infoMascota_id;
+        this.actividad_id = actividad_id;
+        this.user_id = user_id;
+    }
+
+    public Agendamiento(String tiempo_asignado_actividad, String fecha_Agendamiento, boolean cumplida, long infoMascota_id, long actividad_id, long user_id) {
+        this.tiempo_asignado_actividad = tiempo_asignado_actividad;
+        Fecha_Agendamiento = fecha_Agendamiento;
+        this.cumplida = cumplida;
+        this.infoMascota_id = infoMascota_id;
+        this.actividad_id = actividad_id;
+        this.user_id = user_id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTiempo_asignado_actividad() {
         return tiempo_asignado_actividad;
@@ -54,5 +83,24 @@ public class Agendamiento {
 
     public void setUser_id(long user_id) {
         this.user_id = user_id;
+    }
+
+    public String getNombre_actividad() {
+        return nombre_actividad;
+    }
+
+    public void setNombre_actividad(String nombre_actividad) {
+        this.nombre_actividad = nombre_actividad;
+    }
+
+    @Override
+    public String toString() {
+        return  id +
+                tiempo_asignado_actividad +
+                Fecha_Agendamiento +
+                cumplida +
+                infoMascota_id +
+                actividad_id +
+                user_id;
     }
 }

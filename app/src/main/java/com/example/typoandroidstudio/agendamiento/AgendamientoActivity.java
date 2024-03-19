@@ -42,9 +42,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AgendamientoActivity extends AppCompatActivity {
-    public void back(View view){
+    public void back(View view) {
         finish();
     }
+
     MascotaAPIService service;
     private ImageButton btnhora, btnfecha;
     private Button btnguardar;
@@ -75,32 +76,36 @@ public class AgendamientoActivity extends AppCompatActivity {
         Spinner caja2 = findViewById(R.id.spinnerActividades);
         Log.i("Spinner", String.valueOf(caja2));
         Spinner caja3 = findViewById(R.id.spinnerTiempo);
-        Log.i("Spinner",String.valueOf(caja3));
+        Log.i("Spinner", String.valueOf(caja3));
 
         Spinner spinnerTiempo = findViewById(R.id.spinnerTiempo);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ArrayTiempo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTiempo.setAdapter(adapter);
+
+
+    // Inicialización del servicio para obtener datos de la API
+    service =MascotaAPIClient.getMascotaInstance();
+
+    // Configuración de listeners para botones y spinners
+
+        btnfecha.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+        mostrarDateTimePickerDialog();
     }
+    });
 
-        // Inicialización del servicio para obtener datos de la API
-        service = MascotaAPIClient.getMascotaInstance();
+        btnguardar.setOnClickListener(new View.OnClickListener()
 
-        // Configuración de listeners para botones y spinners
-
-        btnfecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarDateTimePickerDialog();
-            }
-        });
-
-        btnguardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardarActividad();
-            }
-        });
+    {
+        @Override
+        public void onClick (View v){
+        guardarActividad();
+    }
+    });
 
         // Listener para spinner de mascotas
         spinnerMascotas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -283,15 +288,14 @@ public class AgendamientoActivity extends AppCompatActivity {
 
         // Obtener la fecha y hora seleccionadas
         String fecha = textViewFecha.getText().toString();
-        String hora = textViewTiempo.getText().toString();
 
         // Crear un objeto Actividad con los datos seleccionados
         Actividad actividad = new Actividad(actividadSeleccionada.getNombre_actividad(), actividadSeleccionada.getDescripcion_actividad());
-
+        Spinner spinnerTiempo = findViewById(R.id.spinnerTiempo);
         // Crear un objeto JSON con los datos de la actividad
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("tiempo_asignado_actividad", hora);
+            jsonBody.put("tiempo_asignado_actividad", spinnerTiempo.getSelectedItem());
             jsonBody.put("cumplida", false);
             jsonBody.put("Fecha_Agendamiento", fecha);
             jsonBody.put("infomascota_id", String.valueOf(mascotaSeleccionada.getId()));

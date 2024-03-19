@@ -78,7 +78,7 @@ public class PerfilUserFragment extends Fragment {
         user.setFecha_nacimiento(fecha_nacimiento);
 
         // Llamar al servicio API para actualizar los datos del usuario
-        Call<User> call = service.updateProfile("Bearer " + auth, user.getId(), name, apellido, telefono, fecha_nacimiento);
+        Call<User> call = service.updateProfile("Bearer " + Datainfo.restLogin.getAccess_token(), user.getId(), name, apellido, telefono, fecha_nacimiento);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

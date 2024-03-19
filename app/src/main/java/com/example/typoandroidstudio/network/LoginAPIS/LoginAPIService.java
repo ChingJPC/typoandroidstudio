@@ -34,7 +34,7 @@ public interface LoginAPIService {
         Call<List<Mascota>> getMascota(@Header("")String auth);
 
         @FormUrlEncoded
-        @PUT("auth/api/users/{id}")
+        @PUT("auth/Usuario-user/{id}")
         Call<User> updateProfile(
                 @Header("Authorization") String auth,
                 @Path("id") long id,
