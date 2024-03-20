@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -50,8 +51,14 @@ public class AgendamientoAdapter extends BaseAdapter {
 
         txtId.setText(String.valueOf(agendamiento.getId()));
         txtActividad.setText(agendamiento.getNombre_actividad());
-        txtFecha.setText(String.valueOf(agendamiento.getId()));
+        txtFecha.setText(String.valueOf(agendamiento.getFecha_Agendamiento()));
         txtTiempo.setText(String.valueOf(agendamiento.getTiempo_asignado_actividad()));
+        if (agendamiento.isCumplida()==1) {
+            TextView textView26 = convertView.findViewById(R.id.textView26);
+            textView26.setVisibility(View.GONE);
+            ImageButton imageButton2 = convertView.findViewById(R.id.imageButton2);
+            imageButton2.setVisibility(View.GONE);
+        }
         return convertView;
     }
 }

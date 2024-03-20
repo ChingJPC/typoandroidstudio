@@ -3,7 +3,6 @@ package com.example.typoandroidstudio.agendamiento;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.typoandroidstudio.Datainfo;
 import com.example.typoandroidstudio.R;
-import com.example.typoandroidstudio.RegisterActivity;
 import com.example.typoandroidstudio.model.Actividad;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
@@ -174,7 +172,7 @@ public class AgendamientoActivity extends AppCompatActivity {
     }
 
     private void loadActividades(long id) {
-        service.getActividad(id, Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token())
+        service.getActividad(Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token())
                 .enqueue(new Callback<List<Actividad>>() {
                     @Override
                     public void onResponse(Call<List<Actividad>> call, Response<List<Actividad>> response) {

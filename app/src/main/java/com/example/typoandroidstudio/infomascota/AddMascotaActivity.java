@@ -70,9 +70,9 @@ public class AddMascotaActivity extends AppCompatActivity {
 
 
     private void cargarspinner(List<Tipomascota> body) {
-        Log.e("TAG", "tipomascota");
+        //Log.e("TAG", "tipomascota");
         Spinner caja7 = findViewById(R.id.spinner);
-        Log.i("Spinner",String.valueOf(caja7));
+        //Log.i("Spinner",String.valueOf(caja7));
         ArrayAdapter<Tipomascota> tipomascotaArrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_expandable_list_item_1,

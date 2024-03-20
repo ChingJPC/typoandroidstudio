@@ -1,5 +1,6 @@
 package com.example.typoandroidstudio.infomascota;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -79,9 +80,9 @@ public class IndexMascotaFragment extends Fragment {
         MascotaAdapter datos = new MascotaAdapter(mascotas, getActivity());
         listamascota.setAdapter(datos);
     }
-
     /*public void regresar(View view) {
         requireActivity().finish();
     }*/
-}
+
+    }
 

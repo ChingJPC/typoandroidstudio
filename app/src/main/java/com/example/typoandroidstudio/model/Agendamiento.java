@@ -4,13 +4,13 @@ public class Agendamiento {
     private long id;
     private String tiempo_asignado_actividad;
     private String Fecha_Agendamiento;
-    private boolean cumplida;
+    private byte cumplida;
     private long infoMascota_id;
     private long actividad_id;
     private long user_id;
     private String nombre_actividad;
 
-    public Agendamiento(long id, String tiempo_asignado_actividad, String fecha_Agendamiento, boolean cumplida, long infoMascota_id, long actividad_id, long user_id) {
+    public Agendamiento(long id, String tiempo_asignado_actividad, String fecha_Agendamiento, byte cumplida, long infoMascota_id, long actividad_id, long user_id) {
         this.id = id;
         this.tiempo_asignado_actividad = tiempo_asignado_actividad;
         Fecha_Agendamiento = fecha_Agendamiento;
@@ -20,7 +20,7 @@ public class Agendamiento {
         this.user_id = user_id;
     }
 
-    public Agendamiento(String tiempo_asignado_actividad, String fecha_Agendamiento, boolean cumplida, long infoMascota_id, long actividad_id, long user_id) {
+    public Agendamiento(String tiempo_asignado_actividad, String fecha_Agendamiento, byte cumplida, long infoMascota_id, long actividad_id, long user_id) {
         this.tiempo_asignado_actividad = tiempo_asignado_actividad;
         Fecha_Agendamiento = fecha_Agendamiento;
         this.cumplida = cumplida;
@@ -53,11 +53,11 @@ public class Agendamiento {
         Fecha_Agendamiento = fecha_Agendamiento;
     }
 
-    public boolean isCumplida() {
+    public byte isCumplida() {
         return cumplida;
     }
 
-    public void setCumplida(boolean cumplida) {
+    public void setCumplida(byte cumplida) {
         this.cumplida = cumplida;
     }
 

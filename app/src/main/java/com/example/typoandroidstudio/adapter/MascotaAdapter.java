@@ -1,15 +1,18 @@
 package com.example.typoandroidstudio.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.infomascota.AgendamientoMascotaActivity;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Tipomascota;
 
@@ -19,6 +22,12 @@ import java.util.logging.SimpleFormatter;
 public class MascotaAdapter extends BaseAdapter {
     private List<Mascota> mascotas;
     private Context context;
+
+    public void next(View view) {
+        Intent intent = new Intent(context, AgendamientoMascotaActivity.class);
+        context.startActivity(intent);
+    }
+
 
     public MascotaAdapter(List<Mascota> mascota, Context context) {
         this.mascotas = mascota;
@@ -48,6 +57,7 @@ public class MascotaAdapter extends BaseAdapter {
         Mascota mascota=mascotas.get(position);
         TextView txtNombre = convertView.findViewById(R.id.textnombre);
         TextView txtID = convertView.findViewById(R.id.textid);
+        ImageButton agendamientomascotas = convertView.findViewById(R.id.agendamientomascotas);
         TextView txtEdad = convertView.findViewById(R.id.textedad);
         TextView txtRaza = convertView.findViewById(R.id.txtraza);
         TextView txtPeso = convertView.findViewById(R.id.textpeso);
@@ -62,6 +72,14 @@ public class MascotaAdapter extends BaseAdapter {
         String valueTamaño = String.format("%.2f",mascota.getTamaño());
         txtTamaño.setText(valueTamaño);
         txtSexo.setText(""+mascota.getSexo());
+
+        agendamientomascotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next(v);
+
+            }
+        });
         return convertView;
     }
 }
