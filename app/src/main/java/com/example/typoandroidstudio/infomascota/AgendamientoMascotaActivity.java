@@ -33,6 +33,8 @@ import retrofit2.Response;
      private MascotaAPIService service;
      private ListView listagendamiento;
 
+     long id;
+
      @Override
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
@@ -41,12 +43,15 @@ import retrofit2.Response;
          service = MascotaAPIClient.getMascotaInstance();
          listagendamiento = findViewById(R.id.listagendamientos);
 
+         // Supongamos que tienes el ID de la mascota que deseas obtener
+         id = getIntent().getLongExtra("id", 0);
+
          loadData();
      }
 
-     private void loadData() {
+     public void loadData() {
          service.getAgendamiento(Datainfo.restLogin.getToken_type() + " " +
-                 Datainfo.restLogin.getAccess_token()).enqueue(new Callback<List<Agendamiento>>() {
+                 Datainfo.restLogin.getAccess_token(), id).enqueue(new Callback<List<Agendamiento>>() {
              @Override
              public void onResponse(Call<List<Agendamiento>> call, Response<List<Agendamiento>> response) {
                  if (response.isSuccessful()) {
@@ -57,13 +62,16 @@ import retrofit2.Response;
 
              @Override
              public void onFailure(Call<List<Agendamiento>> call, Throwable t) {
-                Log.e("TYPO", t.getMessage());
+                 Log.e("TYPO", t.getMessage());
              }
          });
      }
-         private void cargarDatos(List<Agendamiento> agendamientos) {
-             Log.i("TYPO", agendamientos.toString());
-             AgendamientoAdapter datos = new AgendamientoAdapter(agendamientos, this);
-             listagendamiento.setAdapter(datos);
-         }
+
+
+     private void cargarDatos(List<Agendamiento> agendamientos) {
+         Log.i("TYPO", agendamientos.toString());
+         AgendamientoAdapter datos = new AgendamientoAdapter(agendamientos, this);
+         listagendamiento.setAdapter(datos);
+     }
  }
+

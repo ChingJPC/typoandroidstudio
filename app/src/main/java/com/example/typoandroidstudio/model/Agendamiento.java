@@ -95,12 +95,15 @@ public class Agendamiento {
 
     @Override
     public String toString() {
-        return  id +
-                tiempo_asignado_actividad +
-                Fecha_Agendamiento +
-                cumplida +
-                infoMascota_id +
-                actividad_id +
-                user_id;
+        return "Agendamiento{" +
+                "id=" + id +
+                ", tiempo_asignado_actividad='" + tiempo_asignado_actividad + '\'' +
+                ", Fecha_Agendamiento='" + Fecha_Agendamiento + '\'' +
+                ", cumplida=" + cumplida +
+                ", infoMascota_id=" + infoMascota_id +
+                ", actividad_id=" + actividad_id +
+                ", user_id=" + user_id +
+                ", nombre_actividad='" + nombre_actividad + '\'' +
+                '}';
     }
 }

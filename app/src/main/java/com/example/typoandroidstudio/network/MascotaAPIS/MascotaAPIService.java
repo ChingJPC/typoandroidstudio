@@ -21,8 +21,8 @@ public interface MascotaAPIService {
     Call<List<Mascota>> getAll(@Header("Authorization") String Authorization);
     @GET("auth/obtenerActividadesMascota/{id}")
     Call<List<Actividad>> getActividad(@Header("Authorization") String Authorization);
-    @GET("auth/Agendamiento")
-    Call<List<Agendamiento>> getAgendamiento(@Header("Authorization") String Authorization);
+    @GET("auth/agendamientos/{id}")
+    Call<List<Agendamiento>> getAgendamiento(@Header("Authorization") String Authorization, @Path("id") long id);
     @POST("auth/Agendamiento")
     Call<Actividad> addActividad(@Body RequestBody body, @Header("Authorization") String Authorization);
 

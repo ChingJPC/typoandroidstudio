@@ -76,7 +76,10 @@ public class MascotaAdapter extends BaseAdapter {
         agendamientomascotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                next(v);
+                Intent intent = new Intent(context, AgendamientoMascotaActivity.class);
+                intent.putExtra("id", mascota.getId());
+                context.startActivity(intent);
+                //next(v);
 
             }
         });
