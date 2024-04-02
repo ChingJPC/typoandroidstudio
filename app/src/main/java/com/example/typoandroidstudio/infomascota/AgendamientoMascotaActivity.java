@@ -2,29 +2,15 @@
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.typoandroidstudio.Datainfo;
 import com.example.typoandroidstudio.R;
 import com.example.typoandroidstudio.adapter.AgendamientoAdapter;
-import com.example.typoandroidstudio.adapter.MascotaAdapter;
-import com.example.typoandroidstudio.model.Actividad;
 import com.example.typoandroidstudio.model.Agendamiento;
-import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIService;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +18,7 @@ import retrofit2.Response;
  public class AgendamientoMascotaActivity extends AppCompatActivity {
      private MascotaAPIService service;
      private ListView listagendamiento;
+     private AgendamientoAdapter adapter;
 
      long id;
 
@@ -56,7 +43,9 @@ import retrofit2.Response;
              public void onResponse(Call<List<Agendamiento>> call, Response<List<Agendamiento>> response) {
                  if (response.isSuccessful()) {
                      List<Agendamiento> agendamiento = response.body();
-                     cargarDatos(agendamiento);
+                     Log.e("Tag de éxito", "La respuesta fue exitosa");
+                     adapter = new AgendamientoAdapter(agendamiento, AgendamientoMascotaActivity.this);
+                     listagendamiento.setAdapter(adapter);
                  }
              }
 
@@ -67,11 +56,31 @@ import retrofit2.Response;
          });
      }
 
+     public void actualizarEstadoCumplida(long agendamientoId, byte cumplida) {
+         service.actualizarTiempoMascotas(Datainfo.restLogin.getToken_type() + " " +
+                         Datainfo.restLogin.getAccess_token(), new Agendamiento(agendamientoId, cumplida))
+                 .enqueue(new Callback<Void>() {
+                     @Override
+                     public void onResponse(Call<Void> call, Response<Void> response) {
+                         if (response.isSuccessful()) {
+                             // Actualización exitosa
+                             // Aquí podrías actualizar la lista de agendamientos y notificar al Adapter
+                             // para que actualice la vista
+                             loadData(); // Por ejemplo, puedes volver a cargar los datos
+                         } else {
+                             // Error en la actualización
+                             Log.e("TAG", "Error en la actualización: " + response.message());
+                         }
+                     }
 
-     private void cargarDatos(List<Agendamiento> agendamientos) {
-         Log.i("TYPO", agendamientos.toString());
-         AgendamientoAdapter datos = new AgendamientoAdapter(agendamientos, this);
-         listagendamiento.setAdapter(datos);
+                     @Override
+                     public void onFailure(Call<Void> call, Throwable t) {
+                         // Error en la conexión
+                         Log.e("TAG", "Error en la conexión: " + t.getMessage());
+                     }
+                 });
      }
  }
+
+
 

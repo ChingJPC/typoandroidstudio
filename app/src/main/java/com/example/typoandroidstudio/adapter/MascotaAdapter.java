@@ -23,38 +23,42 @@ public class MascotaAdapter extends BaseAdapter {
     private List<Mascota> mascotas;
     private Context context;
 
-    public void next(View view) {
-        Intent intent = new Intent(context, AgendamientoMascotaActivity.class);
-        context.startActivity(intent);
-    }
-
-
+    // Constructor que recibe la lista de mascotas y el contexto
     public MascotaAdapter(List<Mascota> mascota, Context context) {
         this.mascotas = mascota;
         this.context = context;
     }
 
+    // Método para obtener la cantidad de elementos en la lista
     @Override
     public int getCount() {
         return mascotas.size();
     }
 
+    // Método para obtener un elemento en una posición específica
     @Override
     public Object getItem(int position) {
         return mascotas.get(position);
     }
 
+    // Método para obtener el ID de un elemento en una posición específica
     @Override
     public long getItemId(int position) {
         return mascotas.get(position).getId();
     }
 
+    // Método para mostrar cada fila en la lista
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.mascota_item_layout,null);
+        // Si convertView es nulo, inflar el diseño de la fila
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.mascota_item_layout, null);
         }
-        Mascota mascota=mascotas.get(position);
+
+        // Obtener el objeto Mascota en la posición actual
+        Mascota mascota = mascotas.get(position);
+
+        // Obtener las referencias a los elementos de la fila
         TextView txtNombre = convertView.findViewById(R.id.textnombre);
         TextView txtID = convertView.findViewById(R.id.textid);
         ImageButton agendamientomascotas = convertView.findViewById(R.id.agendamientomascotas);
@@ -64,25 +68,30 @@ public class MascotaAdapter extends BaseAdapter {
         TextView txtTamaño = convertView.findViewById(R.id.txttamaño);
         TextView txtSexo = convertView.findViewById(R.id.textsexo);
 
+        // Establecer los valores de los elementos de la fila con los datos de la mascota actual
         txtNombre.setText(mascota.getNombre_Mascota());
         txtID.setText(String.valueOf(mascota.getId()));
-        txtEdad.setText(""+ mascota.getEdad());
+        txtEdad.setText("" + mascota.getEdad());
         txtRaza.setText(mascota.getRaza());
-        txtPeso.setText(""+ mascota.getPeso());
-        String valueTamaño = String.format("%.2f",mascota.getTamaño());
+        txtPeso.setText("" + mascota.getPeso());
+        String valueTamaño = String.format("%.2f", mascota.getTamaño());
         txtTamaño.setText(valueTamaño);
-        txtSexo.setText(""+mascota.getSexo());
+        txtSexo.setText("" + mascota.getSexo());
 
+        // Acción del botón "Agendar" para abrir la actividad AgendamientoMascotaActivity
         agendamientomascotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Crear un intent para abrir la actividad AgendamientoMascotaActivity
                 Intent intent = new Intent(context, AgendamientoMascotaActivity.class);
+                // Pasar el ID de la mascota seleccionada como extra en el intent
                 intent.putExtra("id", mascota.getId());
+                // Iniciar la actividad
                 context.startActivity(intent);
-                //next(v);
-
             }
         });
+
         return convertView;
     }
 }
+

@@ -14,13 +14,14 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface MascotaAPIService {
     @GET("auth/Informacion")
     Call<List<Mascota>> getAll(@Header("Authorization") String Authorization);
     @GET("auth/obtenerActividadesMascota/{id}")
-    Call<List<Actividad>> getActividad(@Header("Authorization") String Authorization);
+    Call<List<Actividad>> getActividad(@Path("id") long idMascota, @Header("Authorization") String Authorization);
     @GET("auth/agendamientos/{id}")
     Call<List<Agendamiento>> getAgendamiento(@Header("Authorization") String Authorization, @Path("id") long id);
     @POST("auth/Agendamiento")
@@ -37,6 +38,8 @@ public interface MascotaAPIService {
 
     @DELETE("auth/Informacion/{id}")
     Call<Mascota> delete(@Path("id") long id);
+    @POST   ("auth/actualizar-tiempo-mascotas")
+    Call<Void> actualizarTiempoMascotas(@Header("Authorization") String Authorization, @Body Agendamiento agendamiento);
 
     Call<Mascota> edit(@Path("id") long id, @Body Mascota mascota);;
 }

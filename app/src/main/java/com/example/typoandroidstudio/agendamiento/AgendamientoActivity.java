@@ -40,12 +40,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AgendamientoActivity extends AppCompatActivity {
+    // Método para regresar a la actividad anterior
     public void back(View view) {
         finish();
     }
 
+    // Declaración de variables
     MascotaAPIService service;
-    private ImageButton btnhora, btnfecha;
+    private ImageButton btnfecha;
     private Button btnguardar;
     private Spinner spinnerMascotas, spinnerActividades, spinnerTiempo;
     private TextView textViewTiempo, textViewFecha;
@@ -81,29 +83,23 @@ public class AgendamientoActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTiempo.setAdapter(adapter);
 
+        // Inicialización del servicio para obtener datos de la API
+        service = MascotaAPIClient.getMascotaInstance();
 
-    // Inicialización del servicio para obtener datos de la API
-    service =MascotaAPIClient.getMascotaInstance();
+        // Configuración de listeners para botones y spinners
+        btnfecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDateTimePickerDialog();
+            }
+        });
 
-    // Configuración de listeners para botones y spinners
-
-        btnfecha.setOnClickListener(new View.OnClickListener()
-
-    {
-        @Override
-        public void onClick (View v){
-        mostrarDateTimePickerDialog();
-    }
-    });
-
-        btnguardar.setOnClickListener(new View.OnClickListener()
-
-    {
-        @Override
-        public void onClick (View v){
-        guardarActividad();
-    }
-    });
+        btnguardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guardarActividad();
+            }
+        });
 
         // Listener para spinner de mascotas
         spinnerMascotas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -136,17 +132,15 @@ public class AgendamientoActivity extends AppCompatActivity {
 
     }
 
-    // Método onStart fuera de onCreate
+    // Método onStart para cargar las mascotas al iniciar la actividad
     @Override
     protected void onStart() {
         super.onStart();
-        // Cargar todas las mascotas al iniciar la actividad
         service.getAll(Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token())
                 .enqueue(new Callback<List<Mascota>>() {
                     @Override
                     public void onResponse(Call<List<Mascota>> call, Response<List<Mascota>> response) {
                         cargarMascotas(response.body());
-                        // Cargar actividades de la primera mascota (si existe) al iniciar la actividad
                         List<Mascota> mascotas = response.body();
                         cargarMascotas(mascotas);
                     }
@@ -171,12 +165,16 @@ public class AgendamientoActivity extends AppCompatActivity {
         loadActividades(mascota.getId_tipomascota());
     }
 
-    private void loadActividades(long id) {
-        service.getActividad(Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token())
+
+    // Método para cargar las actividades de una mascota específica
+    private void loadActividades(long idMascota) {
+        // Llamar al servicio API para obtener las actividades de la mascota
+        service.getActividad(idMascota, Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token())
                 .enqueue(new Callback<List<Actividad>>() {
                     @Override
                     public void onResponse(Call<List<Actividad>> call, Response<List<Actividad>> response) {
                         if (response.isSuccessful()) {
+                            // Si la respuesta es exitosa, cargar las actividades en el spinner
                             List<Actividad> actividades = response.body();
                             cargarActividad(actividades);
                         } else {
@@ -191,8 +189,9 @@ public class AgendamientoActivity extends AppCompatActivity {
                 });
     }
 
-    // Método para cargar las actividades de un tipo de mascota específico en el spinner de actividades
+    // Método para cargar las actividades en el spinner de actividades
     private void cargarActividad(List<Actividad> actividades) {
+        // Crear un adaptador para las actividades y asignarlo al spinner
         ArrayAdapter<Actividad> actividadArrayAdapter = new ArrayAdapter<>(
                 AgendamientoActivity.this,
                 android.R.layout.simple_spinner_item,
@@ -202,22 +201,7 @@ public class AgendamientoActivity extends AppCompatActivity {
         spinnerActividades.setAdapter(actividadArrayAdapter);
     }
 
-    // Método para mostrar el diálogo de selección de hora
-    /*private void mostrarTimePickerDialog() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(
-                this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                TextView editTextTiempo = findViewById(R.id.textViewTiempo);
-                editTextTiempo.setText(String.format("%02d:%02d", hourOfDay, minute));
-            }
-        },
-                hora, minuto, false
-        );
-        timePickerDialog.show();
-    }*/
-
-    // Método para mostrar el diálogo de selección de fecha
+    // Método para mostrar el diálogo de selección de fecha y hora
     private void mostrarDateTimePickerDialog() {
         // Obtener la fecha y hora actuales
         Calendar calendarioActual = Calendar.getInstance();
@@ -244,11 +228,11 @@ public class AgendamientoActivity extends AppCompatActivity {
 
                                         // Validar que la fecha seleccionada sea a partir de hoy
                                         if (fechaSeleccionada.compareTo(calendarioActual) >= 0) {
-                                            // La fecha seleccionada es válida
+                                            // La fecha seleccionada es válida, mostrarla en el TextView de fecha
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
                                             textViewFecha.setText(dateFormat.format(fechaSeleccionada.getTime()));
                                         } else {
-                                            // Mostrar un mensaje de error
+                                            // Mostrar un mensaje de error si la fecha seleccionada es anterior a hoy
                                             Toast.makeText(AgendamientoActivity.this, "Selecciona una fecha y hora a partir de hoy", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -267,8 +251,7 @@ public class AgendamientoActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-
-
+    // Método para guardar una actividad
     private void guardarActividad() {
         // Obtener la mascota seleccionada
         Mascota mascotaSeleccionada = (Mascota) spinnerMascotas.getSelectedItem();
@@ -287,9 +270,6 @@ public class AgendamientoActivity extends AppCompatActivity {
         // Obtener la fecha y hora seleccionadas
         String fecha = textViewFecha.getText().toString();
 
-        // Crear un objeto Actividad con los datos seleccionados
-        Actividad actividad = new Actividad(actividadSeleccionada.getNombre_actividad(), actividadSeleccionada.getDescripcion_actividad());
-        Spinner spinnerTiempo = findViewById(R.id.spinnerTiempo);
         // Crear un objeto JSON con los datos de la actividad
         JSONObject jsonBody = new JSONObject();
         try {

@@ -10,6 +10,10 @@ public class Agendamiento {
     private long user_id;
     private String nombre_actividad;
 
+    public Agendamiento(long id, byte cumplida) {
+        this.id = id;
+        this.cumplida = cumplida;
+    }
     public Agendamiento(long id, String tiempo_asignado_actividad, String fecha_Agendamiento, byte cumplida, long infoMascota_id, long actividad_id, long user_id) {
         this.id = id;
         this.tiempo_asignado_actividad = tiempo_asignado_actividad;

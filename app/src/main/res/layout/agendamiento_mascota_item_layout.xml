@@ -20,19 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textid" />
 
     <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="No cumplio"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTiempo" />
-
-    <TextView
         android:id="@+id/textid"
         android:layout_width="100dp"
         android:layout_height="32dp"
@@ -86,18 +73,6 @@
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/botonx"
-        android:backgroundTint="#FF0000"
-        app:layout_constraintEnd_toEndOf="@+id/textView26"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/textViewTiempo"

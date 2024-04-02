@@ -62,8 +62,8 @@ public class IndexMascotaFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Mascota>> call, Response<List<Mascota>> response) {
                 if (response.isSuccessful()) {
-                    List<Mascota> mascota = response.body();
-                    cargarDatos(mascota);
+                    List<Mascota> mascotas = response.body();
+                    cargarDatos(mascotas);
                 }
             }
 
@@ -83,5 +83,6 @@ public class IndexMascotaFragment extends Fragment {
         requireActivity().finish();
     }*/
 
-    }
+}
+
 

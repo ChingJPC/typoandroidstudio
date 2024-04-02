@@ -1,14 +1,14 @@
 package com.example.typoandroidstudio.adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.typoandroidstudio.R;
@@ -20,8 +20,9 @@ import java.util.List;
 public class AgendamientoAdapter extends BaseAdapter {
     private List<Agendamiento> agendamientos;
     private Context context;
-    public AgendamientoAdapter(List<Agendamiento> agendamiento, Context context) {
-        this.agendamientos = agendamiento;
+
+    public AgendamientoAdapter(List<Agendamiento> agendamientos, Context context) {
+        this.agendamientos = agendamientos;
         this.context = context;
     }
 
@@ -45,41 +46,54 @@ public class AgendamientoAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.agendamiento_mascota_item_layout, null);
         }
+
         Agendamiento agendamiento = agendamientos.get(position);
 
         TextView txtId = convertView.findViewById(R.id.textid);
         TextView txtActividad = convertView.findViewById(R.id.textViewActividad);
         TextView txtFecha = convertView.findViewById(R.id.textViewFechaAgendamiento);
         TextView txtTiempo = convertView.findViewById(R.id.textViewTiempo);
+        TextView textView27 = convertView.findViewById(R.id.textView27);
 
         txtId.setText(String.valueOf(agendamiento.getId()));
         txtActividad.setText(agendamiento.getNombre_actividad());
         txtFecha.setText(String.valueOf(agendamiento.getFecha_Agendamiento()));
         txtTiempo.setText(String.valueOf(agendamiento.getTiempo_asignado_actividad()));
+
+        ImageView imageView = convertView.findViewById(R.id.imageButton3); // Supongamos que la imagen tiene el ID imageView
+
+        // Mostrar la imagen y el texto mientras la actividad no esté cumplida (valor 0)
         if (agendamiento.isCumplida() == 0) {
-            TextView textView26 = convertView.findViewById(R.id.textView26);
-            textView26.setVisibility(View.GONE);
-            ImageButton imageButton2 = convertView.findViewById(R.id.imageButton2);
-            imageButton2.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
+            textView27.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.GONE);
+            textView27.setVisibility(View.GONE);
         }
 
-        // Aquí defines la acción del botón para cargar los agendamientos de la mascota correspondiente
         ImageButton imageButton = convertView.findViewById(R.id.imageButton3);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obtener el ID de la mascota deseada, por ejemplo, agendamiento.getIdMascota()
-                //Toast.makeText(context, "00000", Toast.LENGTH_SHORT).show();
-                long id = agendamiento.getId();
-                /*Intent intent = new Intent(context, AgendamientoMascotaActivity.class);
-                intent.putExtra("id", id);
-                context.startActivity(intent);*/
-                // Cargar los agendamientos de la mascota específica
-                //((AgendamientoMascotaActivity)context).loadData(id);
+                long agendamientoId = agendamiento.getId();
+                byte cumplida = 1; // O el valor que corresponda para indicar que la actividad está cumplida
+                if (context instanceof AgendamientoMascotaActivity) {
+                    ((AgendamientoMascotaActivity) context).actualizarEstadoCumplida(agendamientoId, cumplida);
+                }
+                // Ocultar la imagen y el texto al marcar como cumplida
+                imageView.setVisibility(View.GONE);
+                textView27.setVisibility(View.GONE);
             }
         });
 
         return convertView;
     }
 }
+
+
+
+
+
+
+
 

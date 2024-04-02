@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -61,22 +62,41 @@ public class MainActivity extends AppCompatActivity  {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId()==R.id.nav_perfil) {
+                if (menuItem.getItemId() == R.id.nav_perfil) {
                     replaceFragment(new PerfilUserFragment());
-
-                }else if (menuItem.getItemId()==R.id.nav_home) {
+                } else if (menuItem.getItemId() == R.id.nav_home) {
                     replaceFragment(new HomeFragmentActivity());
-
-                }else if (menuItem.getItemId()==R.id.nav_settings){
+                } else if (menuItem.getItemId() == R.id.nav_settings) {
                     replaceFragment(new IndexMascotaFragment());
-
+                } else if (menuItem.getItemId() == R.id.nav_logout) {
+                    logout();
                 }
 
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
+            private void logout() {
+                // Elimina el token de autenticación
+                SharedPreferences.Editor editor = getSharedPreferences("myPrefs", MODE_PRIVATE).edit();
+                editor.remove("token");
+                editor.apply();
+
+                // Verifica si el token se ha eliminado correctamente
+                if (getSharedPreferences("myPrefs", MODE_PRIVATE).contains("token")) {
+                    Log.e("Logout", "El token no se eliminó correctamente");
+                } else {
+                    Log.e("Logout", "El token se eliminó correctamente");
+                }
+
+                // Redirige a la pantalla de login
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Cierra la actividad actual para que el usuario no pueda regresar con el botón de retroceso
+            }
         });
+
+
 
 
 
