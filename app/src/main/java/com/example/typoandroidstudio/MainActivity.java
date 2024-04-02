@@ -29,16 +29,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.typoandroidstudio.agendamiento.AgendamientoActivity;
+import com.example.typoandroidstudio.agendamiento.LogrosFragmentActivity;
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
+import com.example.typoandroidstudio.model.RestLogin;
+import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
+import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity  {
 
+public class MainActivity extends AppCompatActivity {
+    private LoginAPIService loginAPIService;
     FloatingActionButton fab;
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        loginAPIService = LoginAPIClient.getLoginService();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fab = findViewById(R.id.fab);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -76,29 +84,7 @@ public class MainActivity extends AppCompatActivity  {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
-            private void logout() {
-                // Elimina el token de autenticación
-                SharedPreferences.Editor editor = getSharedPreferences("myPrefs", MODE_PRIVATE).edit();
-                editor.remove("token");
-                editor.apply();
-
-                // Verifica si el token se ha eliminado correctamente
-                if (getSharedPreferences("myPrefs", MODE_PRIVATE).contains("token")) {
-                    Log.e("Logout", "El token no se eliminó correctamente");
-                } else {
-                    Log.e("Logout", "El token se eliminó correctamente");
-                }
-
-                // Redirige a la pantalla de login
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); // Cierra la actividad actual para que el usuario no pueda regresar con el botón de retroceso
-            }
         });
-
-
-
-
 
         TextView txtUser = linear.findViewById(R.id.user);
         String fullName = Datainfo.restLogin.getUser().getName() + " " +
@@ -141,6 +127,8 @@ public class MainActivity extends AppCompatActivity  {
             } else if (itemId == R.id.agendamiendo) {
                 Intent intent = new Intent(MainActivity.this, AgendamientoActivity.class);
                 startActivity(intent);
+            }else if (itemId == R.id.logros) {
+                replaceFragment(new LogrosFragmentActivity());
             }
             return true;
         });
@@ -155,7 +143,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
     }
-    private  void replaceFragment(Fragment fragment) {
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -186,7 +174,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-            //Agendamiento
+        //Agendamiento
         shortsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,4 +211,24 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    private void logout() {
+        // Elimina el token de autenticación
+        loginAPIService.logout(Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token()).enqueue(new Callback<RestLogin>() {
+            @Override
+            public void onResponse(Call<RestLogin> call, Response<RestLogin> response) {
+                if (response.isSuccessful()) {
+                    // Redirige a la pantalla de login
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish(); // Cierra la actividad actual para que el usuario no pueda regresar con el botón de retroceso
+                } else {
+                    Toast.makeText(MainActivity.this, "Error al Cerrar Sesion", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<RestLogin> call, Throwable t) {
+
+            }
+        });
+    }
 }

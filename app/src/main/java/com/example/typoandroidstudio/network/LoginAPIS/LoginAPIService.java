@@ -43,5 +43,8 @@ public interface LoginAPIService {
                 @Field("telefono") String telefono,
                 @Field("fecha_nacimiento") String fecha_nacimiento
         );
-    }
+
+        @GET("auth/logout")
+        Call<RestLogin>logout(@Header("Authorization") String auth);
+}
 
