@@ -2,6 +2,7 @@
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.typoandroidstudio.Datainfo;
@@ -19,7 +20,6 @@ import retrofit2.Response;
      private MascotaAPIService service;
      private ListView listagendamiento;
      private AgendamientoAdapter adapter;
-
      long id;
 
      @Override

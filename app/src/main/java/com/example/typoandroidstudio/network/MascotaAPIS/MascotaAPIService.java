@@ -4,6 +4,7 @@ import com.example.typoandroidstudio.model.Actividad;
 import com.example.typoandroidstudio.model.Agendamiento;
 import com.example.typoandroidstudio.model.Logros;
 import com.example.typoandroidstudio.model.Mascota;
+import com.example.typoandroidstudio.model.Mascotalogros;
 import com.example.typoandroidstudio.model.Tipomascota;
 
 import java.util.List;
@@ -43,5 +44,7 @@ public interface MascotaAPIService {
     @POST("auth/actualizar-tiempo-mascotas")
     Call<Void> actualizarTiempoMascotas(@Header("Authorization") String Authorization, @Body Agendamiento agendamiento);
 
-    Call<Mascota> edit(@Path("id") long id, @Body Mascota mascota);;
+    Call<Mascota> edit(@Path("id") long id, @Body Mascota mascota);
+    @GET("auth/mascotas/{mascotaId}/logros")
+    Call<List<Mascotalogros>> obtenerLogrosDeMascota(@Path("mascotaId") long mascotaId);
 }

@@ -10,10 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.agendamiento.MascotaLogrosActivity;
 import com.example.typoandroidstudio.infomascota.AgendamientoMascotaActivity;
+import com.example.typoandroidstudio.model.Logros;
 import com.example.typoandroidstudio.model.Mascota;
+import com.example.typoandroidstudio.model.Mascotalogros;
 import com.example.typoandroidstudio.model.Tipomascota;
 
 import java.util.List;
@@ -21,6 +25,7 @@ import java.util.logging.SimpleFormatter;
 
 public class MascotaAdapter extends BaseAdapter {
     private List<Mascota> mascotas;
+    private List<Mascotalogros> logros;
     private Context context;
 
     // Constructor que recibe la lista de mascotas y el contexto
@@ -47,6 +52,30 @@ public class MascotaAdapter extends BaseAdapter {
         return mascotas.get(position).getId();
     }
 
+    // Constructor que recibe la lista de mascotas y el contexto
+    public LogroAdapter(List<Logro> logro, Context context) {
+        this.logros = logro;
+        this.context = context;
+    }
+
+    // Método para obtener la cantidad de elementos en la lista
+    @Override
+    public int getCount() {
+        return logro.size();
+    }
+
+    // Método para obtener un elemento en una posición específica
+    @Override
+    public Object getItem(int position) {
+        return logro.get(position);
+    }
+
+    // Método para obtener el ID de un elemento en una posición específica
+    @Override
+    public long getItemId(int position) {
+        return logro.get(position).getId();
+    }
+
     // Método para mostrar cada fila en la lista
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -57,11 +86,13 @@ public class MascotaAdapter extends BaseAdapter {
 
         // Obtener el objeto Mascota en la posición actual
         Mascota mascota = mascotas.get(position);
+        Mascotalogros mascotalogros = logro.get(position);
 
         // Obtener las referencias a los elementos de la fila
         TextView txtNombre = convertView.findViewById(R.id.textnombre);
         TextView txtID = convertView.findViewById(R.id.textid);
         ImageButton agendamientomascotas = convertView.findViewById(R.id.agendamientomascotas);
+        ImageButton medalla = convertView.findViewById(R.id.medalla);
         TextView txtEdad = convertView.findViewById(R.id.textedad);
         TextView txtRaza = convertView.findViewById(R.id.txtraza);
         TextView txtPeso = convertView.findViewById(R.id.textpeso);
@@ -88,6 +119,20 @@ public class MascotaAdapter extends BaseAdapter {
                 intent.putExtra("id", mascota.getId());
                 // Iniciar la actividad
                 context.startActivity(intent);
+            }
+        });
+
+        medalla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mascotalogros logros = mascotalogros.getLogros(); // Obtener el objeto Mascotalogros asociado a la Mascota
+                if (logros != null) {
+                    Intent intent = new Intent(context, MascotaLogrosActivity.class);
+                    intent.putExtra("id", logros.getId()); // Pasar el ID del logro como extra en el intent
+                    context.startActivity(intent);
+                } else {
+                    Toast.makeText(context, "Logros no encontrados para esta mascota", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

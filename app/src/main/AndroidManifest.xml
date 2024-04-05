@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Typoandroidstudio"
         tools:targetApi="31">
         <activity
+            android:name=".agendamiento.MascotaLogrosActivity"
+            android:exported="false" />
+        <activity
             android:name=".infomascota.AgendamientoMascotaActivity"
             android:exported="false" />
         <activity android:name=".infomascota.IndexMascotaFragment" />
@@ -52,7 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
