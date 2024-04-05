@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MascotaAPIClient {
     //private static final String URL = "https://typo.api.adsocidm.com/api/";
-    //private static final String URL = "http://10.201.194.17:8000/api/";
-    private static final String URL = "http://192.168.56.1:8000/api/";
+    private static final String URL = "http://10.201.194.10:8000/api/";
+    //private static final String URL = "http://192.168.56.1:8000/api/";
     private static MascotaAPIService instance;
 
     public static MascotaAPIService getMascotaInstance(){

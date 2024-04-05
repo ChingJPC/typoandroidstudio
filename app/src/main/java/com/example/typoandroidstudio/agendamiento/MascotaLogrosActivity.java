@@ -55,7 +55,8 @@ public class MascotaLogrosActivity extends AppCompatActivity {
     }
 
     public void loadData() {
-        service.obtenerLogrosDeMascota(id).enqueue(new Callback<List<Mascotalogros>>() {
+        service.obtenerLogrosDeMascota(Datainfo.restLogin.getToken_type() + " " +
+                Datainfo.restLogin.getAccess_token(), id).enqueue(new Callback<List<Mascotalogros>>() {
             @Override
             public void onResponse(Call<List<Mascotalogros>> call, Response<List<Mascotalogros>> response) {
                 if (response.isSuccessful()) {
@@ -63,12 +64,15 @@ public class MascotaLogrosActivity extends AppCompatActivity {
                     Log.e("Tag de éxito", "La respuesta fue exitosa");
                     adapter = new MascotaLogrosAdapter(MascotaLogrosActivity.this, mascotalogros);
                     listalogrosmascota.setAdapter(adapter);
+                }else {
+                    Log.e("Tag de éxito", response.toString());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Mascotalogros>> call, Throwable t) {
                 // Manejar la falla de la solicitud aquí
+                Log.e("Tag Error", t.getMessage());
             }
         });
     }

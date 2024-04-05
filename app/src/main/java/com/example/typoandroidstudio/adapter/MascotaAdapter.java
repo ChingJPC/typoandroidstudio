@@ -53,28 +53,7 @@ public class MascotaAdapter extends BaseAdapter {
     }
 
     // Constructor que recibe la lista de mascotas y el contexto
-    public LogroAdapter(List<Logro> logro, Context context) {
-        this.logros = logro;
-        this.context = context;
-    }
 
-    // Método para obtener la cantidad de elementos en la lista
-    @Override
-    public int getCount() {
-        return logro.size();
-    }
-
-    // Método para obtener un elemento en una posición específica
-    @Override
-    public Object getItem(int position) {
-        return logro.get(position);
-    }
-
-    // Método para obtener el ID de un elemento en una posición específica
-    @Override
-    public long getItemId(int position) {
-        return logro.get(position).getId();
-    }
 
     // Método para mostrar cada fila en la lista
     @Override
@@ -86,7 +65,6 @@ public class MascotaAdapter extends BaseAdapter {
 
         // Obtener el objeto Mascota en la posición actual
         Mascota mascota = mascotas.get(position);
-        Mascotalogros mascotalogros = logro.get(position);
 
         // Obtener las referencias a los elementos de la fila
         TextView txtNombre = convertView.findViewById(R.id.textnombre);
@@ -125,14 +103,12 @@ public class MascotaAdapter extends BaseAdapter {
         medalla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mascotalogros logros = mascotalogros.getLogros(); // Obtener el objeto Mascotalogros asociado a la Mascota
-                if (logros != null) {
-                    Intent intent = new Intent(context, MascotaLogrosActivity.class);
-                    intent.putExtra("id", logros.getId()); // Pasar el ID del logro como extra en el intent
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, "Logros no encontrados para esta mascota", Toast.LENGTH_SHORT).show();
-                }
+                // Crear un intent para abrir la actividad AgendamientoMascotaActivity
+                Intent intent = new Intent(context, MascotaLogrosActivity.class);
+                // Pasar el ID de la mascota seleccionada como extra en el intent
+                intent.putExtra("id", mascota.getId());
+                // Iniciar la actividad
+                context.startActivity(intent);
             }
         });
 

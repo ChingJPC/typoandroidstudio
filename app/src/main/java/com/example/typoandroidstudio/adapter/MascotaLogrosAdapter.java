@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,11 +16,12 @@ import com.example.typoandroidstudio.R;
 import com.example.typoandroidstudio.agendamiento.MascotaLogrosActivity;
 import com.example.typoandroidstudio.infomascota.AgendamientoMascotaActivity;
 import com.example.typoandroidstudio.model.Logros;
+import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Mascotalogros;
 
 import java.util.List;
 
-public class MascotaLogrosAdapter extends RecyclerView.Adapter<MascotaLogrosAdapter.MascotaLogrosViewHolder> {
+public class MascotaLogrosAdapter extends BaseAdapter {
     private Context context;
     private List<Mascotalogros> logrosList;
 
@@ -28,47 +30,39 @@ public class MascotaLogrosAdapter extends RecyclerView.Adapter<MascotaLogrosAdap
         this.logrosList = logrosList;
     }
 
-    @NonNull
     @Override
-    public MascotaLogrosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_mascota_logros, parent, false);
-        return new MascotaLogrosViewHolder(view);
+    public int getCount() {return logrosList.size();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MascotaLogrosViewHolder holder, int position) {
-        Mascotalogros logro = logrosList.get(position);
-        holder.bind(logro);
+    public Object getItem(int position) {
+        return logrosList.get(position);
     }
 
     @Override
-    public int getItemCount() {
-        return logrosList.size();
+    public long getItemId(int position) {
+        return logrosList.get(position).getId();
     }
 
-    public class MascotaLogrosViewHolder extends RecyclerView.ViewHolder {
-        private TextView tipoLogroTextView;
-        private TextView tiempoSemanalTextView;
-
-        public MascotaLogrosViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tipoLogroTextView = itemView.findViewById(R.id.tipoLogroTextView);
-            tiempoSemanalTextView = itemView.findViewById(R.id.tiempoSemanalTextView);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Si convertView es nulo, inflar el diseño de la fila
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.activity_mascota_logros_item_layout, null);
         }
 
-        public void bind(Mascotalogros logro) {
-            tipoLogroTextView.setText(logro.getTipoLogro());
+        // Obtener el objeto Mascota en la posición actual
+        Mascotalogros mascotalogros = logrosList.get(position);
 
-            StringBuilder sb = new StringBuilder();
-            for (Logros logros : logro.getTiempoSemanal()) {
-                sb.append(logros.getTipoLogro()).append(", ");
-            }
-            if (sb.length() > 0) {
-                sb.setLength(sb.length() - 2); // Eliminar la última coma y espacio
-            }
-            tiempoSemanalTextView.setText(sb.toString());
-        }
+        // Obtener las referencias a los elementos de la fila
+        TextView txtNombre = convertView.findViewById(R.id.tipoLogroTextView);
+        TextView txtTiempo = convertView.findViewById(R.id.tiempoSemanalTextView);
+
+        // Establecer los valores de los elementos de la fila con los datos de la mascota actual
+        txtNombre.setText(mascotalogros.getTipoLogro());
+        txtTiempo.setText(String.valueOf(mascotalogros.getTiempoSemanal()));
+
+        return convertView;
     }
 }
-
 

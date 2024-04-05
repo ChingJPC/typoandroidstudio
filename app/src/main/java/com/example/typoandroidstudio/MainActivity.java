@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.typoandroidstudio.agendamiento.AgendamientoActivity;
 import com.example.typoandroidstudio.agendamiento.LogrosFragmentActivity;
+import com.example.typoandroidstudio.home.AboutUsFragmentActivity;
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
@@ -74,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new PerfilUserFragment());
                 } else if (menuItem.getItemId() == R.id.nav_home) {
                     replaceFragment(new HomeFragmentActivity());
-                } else if (menuItem.getItemId() == R.id.nav_settings) {
-                    replaceFragment(new IndexMascotaFragment());
+                } else if (menuItem.getItemId() == R.id.nav_about) {
+                    replaceFragment(new AboutUsFragmentActivity());
                 } else if (menuItem.getItemId() == R.id.nav_logout) {
                     logout();
                 }

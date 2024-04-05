@@ -5,15 +5,15 @@ import java.util.List;
 public class Mascotalogros {
     private long id;
     private String tipoLogro;
-    private List<Logros> tiempoSemanal;
+    private String tiempoSemanal;
 
-    public Mascotalogros(long id, String tipoLogro, List<Logros> tiempoSemanal) {
+    public Mascotalogros(long id, String tipoLogro, String tiempoSemanal) {
         this.id = id;
         this.tipoLogro = tipoLogro;
         this.tiempoSemanal = tiempoSemanal;
     }
 
-    public Mascotalogros(String tipoLogro, List<Logros> tiempoSemanal) {
+    public Mascotalogros(String tipoLogro, String tiempoSemanal) {
         this.tipoLogro = tipoLogro;
         this.tiempoSemanal = tiempoSemanal;
     }
@@ -34,11 +34,11 @@ public class Mascotalogros {
         this.tipoLogro = tipoLogro;
     }
 
-    public List<Logros> getTiempoSemanal() {
+    public String getTiempoSemanal() {
         return tiempoSemanal;
     }
 
-    public void setTiempoSemanal(List<Logros> tiempoSemanal) {
+    public void setTiempoSemanal(String tiempoSemanal) {
         this.tiempoSemanal = tiempoSemanal;
     }
 
