@@ -4,11 +4,25 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.typoandroidstudio.Datainfo;
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.model.Reportes;
+import com.example.typoandroidstudio.model.User;
+import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
+import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,51 +30,73 @@ import com.example.typoandroidstudio.R;
  * create an instance of this fragment.
  */
 public class ReporteFragmentActivity extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private MascotaAPIService service;
+    private TextView textViewTotalAgendamientos;
+    private TextView textViewPorcentajeCumplimiento;
+    private TextView textViewMesReporte;
 
     public ReporteFragmentActivity() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ReporteFragmentActivity.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ReporteFragmentActivity newInstance(String param1, String param2) {
-        ReporteFragmentActivity fragment = new ReporteFragmentActivity();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static ReporteFragmentActivity newInstance() {
+        return new ReporteFragmentActivity();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reporte_activity, container, false);
+        View view = inflater.inflate(R.layout.fragment_reporte_activity, container, false);
+        service = MascotaAPIClient.getMascotaInstance();
+
+        textViewTotalAgendamientos = view.findViewById(R.id.total_agendamientos);
+        textViewPorcentajeCumplimiento = view.findViewById(R.id.porcentaje_cumplimiento);
+        textViewMesReporte = view.findViewById(R.id.mes_reporte);
+
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadData();
+    }
+
+    private void loadData() {
+        if (Datainfo.restLogin != null) {
+            String token = Datainfo.restLogin.getToken_type() + " " + Datainfo.restLogin.getAccess_token();
+            User user = Datainfo.restLogin.getUser();
+            if (user != null) {
+                long usuarioId = user.getId(); // Suponiendo que getId() devuelve el ID del usuario
+                service.ReporteCumplimiento(token, usuarioId).enqueue(new Callback<List<Reportes>>() {
+                    @Override
+                    public void onResponse(Call<List<Reportes>> call, Response<List<Reportes>> response) {
+                        if (response.isSuccessful()) {
+                            List<Reportes> reportes = response.body();
+                            mostrarDatos(reportes);
+                        } else {
+                            // Manejar respuesta no exitosa
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Reportes>> call, Throwable t) {
+                        Log.e("Reportes", t.getMessage());
+                    }
+                });
+            }
+        }
+    }
+
+    private void mostrarDatos(List<Reportes> reportes) {
+        // Suponiendo que solo quieres mostrar el primer reporte
+        if (!reportes.isEmpty()) {
+            Reportes primerReporte = reportes.get(0);
+            textViewTotalAgendamientos.setText(String.valueOf(primerReporte.getTotal_agendamientos()));
+            textViewPorcentajeCumplimiento.setText(String.valueOf(primerReporte.getPorcentaje_cumplimiento()));
+            textViewMesReporte.setText(primerReporte.getMes_reporte());
+        }
     }
 }
+

@@ -32,6 +32,7 @@ import com.example.typoandroidstudio.agendamiento.AgendamientoActivity;
 import com.example.typoandroidstudio.agendamiento.LogrosFragmentActivity;
 import com.example.typoandroidstudio.home.AboutUsFragmentActivity;
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
+import com.example.typoandroidstudio.home.ReporteFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
 import com.example.typoandroidstudio.model.RestLogin;
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new AboutUsFragmentActivity());
                 } else if (menuItem.getItemId() == R.id.nav_logout) {
                     logout();
+                } else if (menuItem.getItemId() == R.id.nav_settings) {
+                    replaceFragment(new ReporteFragmentActivity());
                 }
 
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView txtUser = linear.findViewById(R.id.user);
+        Log.e("TYPO", "Datainfo: " + Datainfo.restLogin.getUser().toString());
         String fullName = Datainfo.restLogin.getUser().getName() + " " +
                 Datainfo.restLogin.getUser().getApellido();
         txtUser.setText(fullName);
