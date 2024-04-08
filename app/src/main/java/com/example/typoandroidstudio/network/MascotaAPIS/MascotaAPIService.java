@@ -52,6 +52,6 @@ public interface MascotaAPIService {
     Call<List<Mascotalogros>> obtenerLogrosDeMascota(@Header("Authorization") String Authorization, @Path("mascotaId") long mascotaId);
 
     @GET("auth/reportes/{usuarioId}/cumplimiento-mensual")
-    Call<List<Reportes>> ReporteCumplimiento(@Header("Authorization") String Authorization, @Path("usuarioId") long usuarioId);
+    Call<Reportes> ReporteCumplimiento(@Header("Authorization") String Authorization, @Path("usuarioId") long usuarioId);
 
 }

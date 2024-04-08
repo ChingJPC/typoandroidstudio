@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="773dp"
         android:orientation="vertical">
 
         <TextView
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Total Agedmaientos:"
-                android:textAlignment="viewStart"
+                android:textAlignment="viewEnd"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,7 +44,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/border_textview"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,17 +62,20 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Cumplimiento:"
-                android:textAlignment="viewStart"
+                android:textAlignment="viewEnd"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/porcentaje_cumplimiento"
-                android:layout_marginRight="10dp"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/border_textview"
-                android:gravity="center" />
+                android:background="@drawable/border_textview_porcentaje"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold|italic" />
         </LinearLayout>
 
         <LinearLayout
@@ -84,23 +90,26 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Mes del Reporte: "
-                android:textAlignment="viewStart"
+                android:textAlignment="viewEnd"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/mes_reporte"
-                android:layout_marginRight="10dp"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/border_textview"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView42"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Agendamientos Cumplidos"
             android:textAlignment="center"
@@ -110,12 +119,13 @@
         <ListView
             android:id="@+id/listacumplidos"
             android:layout_width="match_parent"
-            android:layout_height="193dp" />
+            android:layout_height="246dp" />
 
         <TextView
             android:id="@+id/textView36"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Agendamientos No Cumplidos"
             android:textAlignment="center"
@@ -125,7 +135,7 @@
         <ListView
             android:id="@+id/listanocumplidos"
             android:layout_width="match_parent"
-            android:layout_height="191dp" />
+            android:layout_height="240dp" />
     </LinearLayout>
 
 </FrameLayout>

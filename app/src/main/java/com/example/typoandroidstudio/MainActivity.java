@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragmentActivity());
                 } else if (menuItem.getItemId() == R.id.nav_about) {
                     replaceFragment(new AboutUsFragmentActivity());
-                } else if (menuItem.getItemId() == R.id.nav_logout) {
-                    logout();
                 } else if (menuItem.getItemId() == R.id.nav_settings) {
                     replaceFragment(new ReporteFragmentActivity());
+                } else if (menuItem.getItemId() == R.id.nav_logout) {
+                logout();
                 }
 
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -120,11 +120,12 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             // Funciones de la barra
-            if (itemId == R.id.home) {
-                replaceFragment(new HomeFragmentActivity());
-            } else if (itemId == R.id.mascotas) {
+            if (itemId == R.id.mascotas) {
                 replaceFragment(new IndexMascotaFragment());
-
+            } else if (itemId == R.id.report) {
+                replaceFragment(new ReporteFragmentActivity());
+            } else if (itemId == R.id.logros) {
+                replaceFragment(new LogrosFragmentActivity());
                 // Funciones boton mas
             } else if (itemId == R.id.pets) {
                 Intent intent = new Intent(MainActivity.this, AddMascotaActivity.class);
@@ -132,8 +133,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.agendamiendo) {
                 Intent intent = new Intent(MainActivity.this, AgendamientoActivity.class);
                 startActivity(intent);
-            }else if (itemId == R.id.logros) {
-                replaceFragment(new LogrosFragmentActivity());
             }
             return true;
         });
@@ -162,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.bottomsheetlayout);
 
         LinearLayout pets = dialog.findViewById(R.id.pets);
-        LinearLayout shortsLayout = dialog.findViewById(R.id.agendamiendo);
+        LinearLayout agendamiento = dialog.findViewById(R.id.agendamiendo);
         LinearLayout liveLayout = dialog.findViewById(R.id.cooming);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
@@ -180,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Agendamiento
-        shortsLayout.setOnClickListener(new View.OnClickListener() {
+        agendamiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

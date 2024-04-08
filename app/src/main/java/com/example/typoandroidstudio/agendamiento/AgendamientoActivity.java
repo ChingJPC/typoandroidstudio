@@ -154,15 +154,17 @@ public class AgendamientoActivity extends AppCompatActivity {
 
     // Método para cargar las mascotas en el spinner de mascotas
     private void cargarMascotas(List<Mascota> mascotas) {
-        ArrayAdapter<Mascota> mascotaArrayAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_item,
-                mascotas
-        );
-        mascotaArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerMascotas.setAdapter(mascotaArrayAdapter);
-        Mascota mascota = mascotas.get(0);
-        loadActividades(mascota.getId_tipomascota());
+        if (mascotas!=null && mascotas.size() > 0) {
+            ArrayAdapter<Mascota> mascotaArrayAdapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_spinner_item,
+                    mascotas
+            );
+            mascotaArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerMascotas.setAdapter(mascotaArrayAdapter);
+            Mascota mascota = mascotas.get(0);
+            loadActividades(mascota.getId_tipomascota());
+        }
     }
 
 
@@ -205,6 +207,7 @@ public class AgendamientoActivity extends AppCompatActivity {
     private void mostrarDateTimePickerDialog() {
         // Obtener la fecha y hora actuales
         Calendar calendarioActual = Calendar.getInstance();
+        Log.e("Fechas Act0", ""+calendarioActual.toString());
         int añoActual = calendarioActual.get(Calendar.YEAR);
         int mesActual = calendarioActual.get(Calendar.MONTH);
         int diaActual = calendarioActual.get(Calendar.DAY_OF_MONTH);
@@ -227,6 +230,9 @@ public class AgendamientoActivity extends AppCompatActivity {
                                         fechaSeleccionada.set(year, month, dayOfMonth, hourOfDay, minute);
 
                                         // Validar que la fecha seleccionada sea a partir de hoy
+                                        Log.e("Fechas Sel", ""+fechaSeleccionada.toString());
+                                        Log.e("Fechas Act", ""+calendarioActual.toString());
+                                        Log.e("Diferencia Fechas", ""+fechaSeleccionada.compareTo(calendarioActual));
                                         if (fechaSeleccionada.compareTo(calendarioActual) >= 0) {
                                             // La fecha seleccionada es válida, mostrarla en el TextView de fecha
                                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());

@@ -21,6 +21,10 @@ import retrofit2.Response;
      private ListView listagendamiento;
      private AgendamientoAdapter adapter;
      long id;
+     // Método para volver atrás
+     public void back(View view) {
+         finish();
+     }
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="724dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="260dp"
                 android:padding="16dp"
                 android:text="Con Take Your Pet Out, aspiramos a cambiar la percepción de sacar a las mascotas, transformándolo de una obligación a un momento de felicidad, convivencia y fortalecimiento de la amistad con nuestros amigos peludos. Estableciendo actividades y horarios personalizados, buscamos fomentar una conexión más significativa entre los dueños y sus mascotas. Nuestra meta es construir una amplia comunidad, donde nuestra aplicación sea reconocida por su contribución en mejorar la relación entre las personas y sus mascotas, cumpliendo efectivamente con su propósito."
                 android:textSize="16sp" />

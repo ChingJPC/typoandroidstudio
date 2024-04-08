@@ -34,6 +34,7 @@ import retrofit2.Response;
 public class LogrosFragmentActivity extends Fragment {
     private MascotaAPIService service;
     private ListView listalogros;
+
     public LogrosFragmentActivity() {
         // Required empty public constructor
     }

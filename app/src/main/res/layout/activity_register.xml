@@ -9,17 +9,6 @@
     tools:layout_editor_absoluteY="-12dp">
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="126dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="752dp"
-        android:layout_marginEnd="324dp"
-        android:rotationY="-37"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/perro" />
-
-    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="178dp"
         android:layout_height="151dp"
@@ -110,7 +99,7 @@
         android:background="@drawable/boton_border_redondo"
         android:ems="10"
         android:hint="Fecha de Nacimiento"
-        android:inputType="text"
+        android:inputType="datetime|date"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/txttelefono"
         app:layout_constraintStart_toStartOf="@+id/txttelefono"
@@ -120,40 +109,44 @@
         android:id="@+id/btnregister"
         android:layout_width="343dp"
         android:layout_height="48dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#06B4FC"
         android:onClick="executeR"
         android:text="Register"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtpassword"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/txtpassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="111dp"
         android:layout_height="21dp"
-        android:layout_marginTop="776dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="48dp"
         android:onClick="goLogin"
         android:text="Inicia sesión aquí"
         android:textColor="#15588E"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnregister"
+        app:layout_constraintVertical_bias="0.296" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="776dp"
+        android:layout_marginStart="40dp"
         android:text="¿Ya tienes una cuenta?"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnregister"
+        app:layout_constraintVertical_bias="0.289" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -163,14 +156,14 @@
         app:layout_constraintEnd_toEndOf="@+id/txtname"
         app:layout_constraintStart_toStartOf="@+id/txtname"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164"
+        app:layout_constraintVertical_bias="0.154"
         app:srcCompat="@drawable/iconotypo" />
 
     <EditText
         android:id="@+id/txtpassword"
         android:layout_width="343dp"
         android:layout_height="38dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/boton_border_redondo"
         android:ems="10"
         android:hint="Password"
@@ -228,5 +221,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063"
         app:srcCompat="@drawable/pajaro" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YYYY-MM-DD"
+        android:textColor="#B3B3B3"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/txtpassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtfecha"
+        app:layout_constraintStart_toStartOf="@+id/txtfecha"
+        app:layout_constraintTop_toBottomOf="@+id/txtfecha"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

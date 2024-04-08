@@ -10,28 +10,29 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.typoandroidstudio.R;
+import com.example.typoandroidstudio.model.Agendamiento;
 import com.example.typoandroidstudio.model.Reportes;
 
 import java.util.List;
 
 public class ReporteAdapter extends BaseAdapter {
 
-    private List<Reportes> reportesList;
+    private List<Agendamiento> agendamientoList;
     private Context context;
 
-    public ReporteAdapter(Context context, List<Reportes> reportesList) {
+    public ReporteAdapter(List<Agendamiento> agendamientoList, Context context) {
         this.context = context;
-        this.reportesList = reportesList;
+        this.agendamientoList = agendamientoList;
     }
 
     @Override
     public int getCount() {
-        return reportesList.size();
+        return agendamientoList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return reportesList.get(position);
+        return agendamientoList.get(position);
     }
 
     @Override
@@ -46,15 +47,15 @@ public class ReporteAdapter extends BaseAdapter {
         }
 
         // Obtener el objeto Mascota en la posición actual
-        Reportes reportes = reportesList.get(position);
+        Agendamiento agendamiento = agendamientoList.get(position);
 
         // Obtener las referencias a los elementos de la fila
         TextView txtID = convertView.findViewById(R.id.idagendamiento);
         TextView txtFECHA = convertView.findViewById(R.id.fechaagendamiento);
 
         // Establecer los valores de los elementos de la fila con los datos de la mascota actual
-        txtID.setText(String.valueOf(reportes.getAgendamientos_cumplidos()));
-        txtFECHA.setText(String.valueOf(reportes.getAgendamientos_cumplidos()));
+        txtID.setText(String.valueOf(agendamiento.getId()));
+        txtFECHA.setText(String.valueOf(agendamiento.getFecha_Agendamiento()));
 
         return convertView;
     }
