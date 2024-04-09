@@ -8,64 +8,18 @@
     tools:layout_editor_absoluteX="-3dp"
     tools:layout_editor_absoluteY="129dp">
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="49dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="5dp"
-        android:rotation="8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:srcCompat="@drawable/ave" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="49dp"
-        android:layout_height="61dp"
-        android:rotation="46"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/ave" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="49dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="592dp"
-        android:rotation="70"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ave" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="134dp"
-        android:layout_height="192dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="4dp"
-        android:rotation="-21"
-        android:rotationX="33"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/gato" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="393dp"
-        android:layout_height="518dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="388dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8">
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView22"
@@ -108,42 +62,13 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
 
+            android:layout_marginTop="20dp"
             android:backgroundTint="#06B4FC"
             android:onClick="login"
             android:text="Login"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="401dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="60dp"
-                android:gravity="center"
-                android:text="¿No tienes una cuenta?"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:gravity="center"
-                android:onClick="next"
-                android:text="Registrate Aquí"
-                android:textColor="#06B4FC"
-                android:textStyle="bold|italic" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -152,10 +77,42 @@
         android:layout_width="289dp"
         android:layout_height="244dp"
         android:layout_gravity="center"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/typo2" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:onClick="next"
+        android:text="Registrate Aquí"
+        android:textColor="#06B4FC"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.311" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="¿No tienes una cuenta?"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.311" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

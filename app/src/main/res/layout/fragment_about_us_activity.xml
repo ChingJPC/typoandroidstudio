@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="724dp">
+        android:layout_height="650dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +75,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="219dp"
                 android:padding="16dp"
                 android:text="Con Take Your Pet Out, aspiramos a cambiar la percepción de sacar a las mascotas, transformándolo de una obligación a un momento de felicidad, convivencia y fortalecimiento de la amistad con nuestros amigos peludos. Estableciendo actividades y horarios personalizados, buscamos fomentar una conexión más significativa entre los dueños y sus mascotas. Nuestra meta es construir una amplia comunidad, donde nuestra aplicación sea reconocida por su contribución en mejorar la relación entre las personas y sus mascotas, cumpliendo efectivamente con su propósito."
                 android:textSize="16sp" />
@@ -77,4 +83,4 @@
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

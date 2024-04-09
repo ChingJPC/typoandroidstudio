@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.typoandroidstudio.Datainfo;
@@ -36,7 +37,7 @@ import retrofit2.Response;
 public class ReporteFragmentActivity extends Fragment {
     private MascotaAPIService service;
     private TextView textViewTotalAgendamientos;
-    private TextView textViewPorcentajeCumplimiento;
+    private ProgressBar progressBarPorcentajeCumplimiento;
     private TextView textViewMesReporte;
     private ListView listacumplidos, listanocumplidos;
 
@@ -58,7 +59,7 @@ public class ReporteFragmentActivity extends Fragment {
         listacumplidos = view.findViewById(R.id.listacumplidos);
         listanocumplidos = view.findViewById(R.id.listanocumplidos);
         textViewTotalAgendamientos = view.findViewById(R.id.total_agendamientos);
-        textViewPorcentajeCumplimiento = view.findViewById(R.id.porcentaje_cumplimiento);
+        progressBarPorcentajeCumplimiento = view.findViewById(R.id.porcentaje_cumplimiento);
         textViewMesReporte = view.findViewById(R.id.mes_reporte);
 
         return view;
@@ -100,7 +101,7 @@ public class ReporteFragmentActivity extends Fragment {
         // Suponiendo que solo quieres mostrar el primer reporte
         if (reportes!=null) {
             textViewTotalAgendamientos.setText(String.valueOf(reportes.getTotal_agendamientos()));
-            textViewPorcentajeCumplimiento.setText(String.valueOf(reportes.getPorcentaje_cumplimiento()));
+            progressBarPorcentajeCumplimiento.setProgress((int) reportes.getPorcentaje_cumplimiento());
             textViewMesReporte.setText(reportes.getMes_reporte());
             ReporteAdapter datos = new ReporteAdapter(reportes.getAgendamientos_cumplidos(), getActivity());
             listacumplidos.setAdapter(datos);

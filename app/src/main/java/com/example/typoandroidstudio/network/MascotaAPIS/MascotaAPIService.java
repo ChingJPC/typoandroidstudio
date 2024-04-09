@@ -31,7 +31,7 @@ public interface MascotaAPIService {
     @POST("auth/Agendamiento")
     Call<Actividad> addActividad(@Body RequestBody body, @Header("Authorization") String Authorization);
 
-    @GET("auth/Tipomascota")
+    @GET("auth/Tipomascota-user")
     Call<List<Tipomascota>> getTipos(@Header("Authorization") String Authorization);
 
     @GET("auth/Informacion/{id}")

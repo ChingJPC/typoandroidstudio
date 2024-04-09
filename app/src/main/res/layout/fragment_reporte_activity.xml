@@ -1,141 +1,208 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ReporteFragmentActivity">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
+    <!-- Encabezado del reporte -->
+    <TextView
+        android:id="@+id/textView_header"
         android:layout_width="match_parent"
-        android:layout_height="773dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:text="REPORTE DE CUMPLIMIENTO"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView32"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:gravity="center"
-            android:text="REPORTE DE CUMPLIMIENTO"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView37"
-                android:layout_width="1dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Total Agedmaientos:"
-                android:textAlignment="viewEnd"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/total_agendamientos"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/border_textview"
-                android:gravity="center"
-                android:textColor="#FF0000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+    <!-- Detalles del reporte -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/textView38"
-                android:layout_width="1dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Cumplimiento:"
-                android:textAlignment="viewEnd"
-                android:textStyle="bold" />
+            <!-- Logro: Total Agendamientos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/porcentaje_cumplimiento"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/border_textview_porcentaje"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold|italic" />
+                <TextView
+                    android:id="@+id/textView_total_agendamientos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Agendamientos:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total_agendamientos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/border_textview2"
+                    android:gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="0"
+                    android:textColor="#FF0000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Logro: Cumplimiento -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/textView_cumplimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cumplimiento:"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/porcentaje_cumplimiento"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="211dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:progressTint="#29C300"
+                    android:text="0%"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+
+            <!-- Espacio entre elementos -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Mes del Reporte -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/textView_mes_reporte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mes del Reporte:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/mes_reporte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <!-- Agendamientos Cumplidos -->
 
-            <TextView
-                android:id="@+id/textView40"
-                android:layout_width="1dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Mes del Reporte: "
-                android:textAlignment="viewEnd"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView_agendamientos_cumplidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Agendamientos Cumplidos"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/mes_reporte"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/border_textview"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView42"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Agendamientos Cumplidos"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold|italic" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp">
 
         <ListView
             android:id="@+id/listacumplidos"
             android:layout_width="match_parent"
-            android:layout_height="246dp" />
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:padding="8dp" />
 
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Agendamientos No Cumplidos"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold|italic" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Agendamientos No Cumplidos -->
+    <TextView
+        android:id="@+id/textView_agendamientos_no_cumplidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Agendamientos No Cumplidos"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp">
 
         <ListView
             android:id="@+id/listanocumplidos"
             android:layout_width="match_parent"
-            android:layout_height="240dp" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:padding="8dp" />
 
-</FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Otros elementos del diseño -->
+
+</LinearLayout>
