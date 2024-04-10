@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.061">
 
         <TextView
             android:id="@+id/textView22"
@@ -36,7 +36,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/boton_border_redondo"
             android:ems="10"
             android:hint="Ingresa tu Usuario"
@@ -49,7 +49,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/boton_border_redondo"
             android:ems="10"
             android:hint="Ingresa tu contraseña"
@@ -98,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <TextView
         android:id="@+id/textView21"
@@ -113,6 +113,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.262" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

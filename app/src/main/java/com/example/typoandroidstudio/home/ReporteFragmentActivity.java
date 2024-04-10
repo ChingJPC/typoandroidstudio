@@ -22,6 +22,7 @@ import com.example.typoandroidstudio.model.User;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIClient;
 import com.example.typoandroidstudio.network.MascotaAPIS.MascotaAPIService;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class ReporteFragmentActivity extends Fragment {
     private MascotaAPIService service;
     private TextView textViewTotalAgendamientos;
     private ProgressBar progressBarPorcentajeCumplimiento;
+    private TextView textViewPorcentajeCumplimiento;
+
     private TextView textViewMesReporte;
     private ListView listacumplidos, listanocumplidos;
 
@@ -60,6 +63,7 @@ public class ReporteFragmentActivity extends Fragment {
         listanocumplidos = view.findViewById(R.id.listanocumplidos);
         textViewTotalAgendamientos = view.findViewById(R.id.total_agendamientos);
         progressBarPorcentajeCumplimiento = view.findViewById(R.id.porcentaje_cumplimiento);
+        textViewPorcentajeCumplimiento = view.findViewById(R.id.porcentaje_cumplimiento_num);
         textViewMesReporte = view.findViewById(R.id.mes_reporte);
 
         return view;
@@ -99,9 +103,16 @@ public class ReporteFragmentActivity extends Fragment {
 
     private void mostrarDatos(Reportes reportes) {
         // Suponiendo que solo quieres mostrar el primer reporte
-        if (reportes!=null) {
+        if (reportes != null) {
             textViewTotalAgendamientos.setText(String.valueOf(reportes.getTotal_agendamientos()));
             progressBarPorcentajeCumplimiento.setProgress((int) reportes.getPorcentaje_cumplimiento());
+
+            // Formatear el porcentaje antes de mostrarlo
+            double porcentajeCumplimiento = reportes.getPorcentaje_cumplimiento();
+            DecimalFormat df = new DecimalFormat("#");
+            String porcentajeFormateado = df.format(porcentajeCumplimiento) + "%";
+            textViewPorcentajeCumplimiento.setText(porcentajeFormateado);
+
             textViewMesReporte.setText(reportes.getMes_reporte());
             ReporteAdapter datos = new ReporteAdapter(reportes.getAgendamientos_cumplidos(), getActivity());
             listacumplidos.setAdapter(datos);
@@ -109,5 +120,7 @@ public class ReporteFragmentActivity extends Fragment {
             listanocumplidos.setAdapter(datos1);
         }
     }
+
 }
+
 

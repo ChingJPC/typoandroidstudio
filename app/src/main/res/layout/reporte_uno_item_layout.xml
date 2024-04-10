@@ -9,13 +9,15 @@
 
     <TextView
         android:id="@+id/fechaagendamiento"
-        android:layout_width="241dp"
+        android:layout_width="250dp"
         android:layout_height="28dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/border_textview"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="16sp"
+        android:textAlignment="viewStart"
+        android:textColor="#006BBF"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/idagendamiento"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,7 +28,9 @@
     <TextView
         android:id="@+id/textView34"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
         android:text="Fecha:"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -35,35 +39,38 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView33"
         app:layout_constraintTop_toBottomOf="@+id/textView33"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.523" />
 
     <TextView
         android:id="@+id/textView33"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
         android:text="ID:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintEnd_toStartOf="@+id/idagendamiento"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.376" />
 
     <TextView
         android:id="@+id/idagendamiento"
-        android:layout_width="241dp"
+        android:layout_width="300dp"
         android:layout_height="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="80dp"
 
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:textAlignment="textStart"
         android:textColor="#FF0000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

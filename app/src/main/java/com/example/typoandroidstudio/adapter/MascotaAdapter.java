@@ -82,9 +82,9 @@ public class MascotaAdapter extends BaseAdapter {
         txtID.setText(String.valueOf(mascota.getId()));
         txtEdad.setText("" + mascota.getEdad());
         txtRaza.setText(mascota.getRaza());
-        txtPeso.setText("" + mascota.getPeso());
+        txtPeso.setText("" + mascota.getPeso() + " kg"); // Agregar " kg" al final del valor de peso
         String valueTamaño = String.format("%.2f", mascota.getTamaño());
-        txtTamaño.setText(valueTamaño);
+        txtTamaño.setText(valueTamaño + " cm"); // Agregar " cm" al final del valor de tamaño
         txtSexo.setText("" + mascota.getSexo());
 
         // Acción del botón "Agendar" para abrir la actividad AgendamientoMascotaActivity

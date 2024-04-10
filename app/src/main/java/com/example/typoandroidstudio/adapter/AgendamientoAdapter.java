@@ -60,7 +60,7 @@ public class AgendamientoAdapter extends BaseAdapter {
         txtFecha.setText(String.valueOf(agendamiento.getFecha_Agendamiento()));
         txtTiempo.setText(String.valueOf(agendamiento.getTiempo_asignado_actividad()));
 
-        ImageView imageView = convertView.findViewById(R.id.imageButton3); // Supongamos que la imagen tiene el ID imageView
+        ImageView imageView = convertView.findViewById(R.id.imageViewChulo); // Supongamos que la imagen tiene el ID imageView
 
         // Mostrar la imagen y el texto mientras la actividad no esté cumplida (valor 0)
         if (agendamiento.isCumplida() == 0) {
@@ -71,7 +71,7 @@ public class AgendamientoAdapter extends BaseAdapter {
             textView27.setVisibility(View.GONE);
         }
 
-        ImageButton imageButton = convertView.findViewById(R.id.imageButton3);
+        ImageButton imageButton = convertView.findViewById(R.id.imageViewChulo);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,10 +80,17 @@ public class AgendamientoAdapter extends BaseAdapter {
                 if (context instanceof AgendamientoMascotaActivity) {
                     ((AgendamientoMascotaActivity) context).actualizarEstadoCumplida(agendamientoId, cumplida);
                 }
+                // Verificar si la actividad sigue sin cumplirse y ocultar la imagen correspondiente
+                if (agendamiento.isCumplida() == 0) {
+                    imageView.setVisibility(View.GONE);
+                    textView27.setVisibility(View.GONE);
+                }
                 // Ocultar la imagen y el texto al marcar como cumplida
                 imageView.setVisibility(View.GONE);
                 textView27.setVisibility(View.GONE);
+
             }
+
         });
 
         return convertView;

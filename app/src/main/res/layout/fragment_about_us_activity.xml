@@ -20,65 +20,133 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Sobre Nosotros."
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Sobre Nosotros."
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Take Your Pet Out (TYPO) es una aplicación diseñada para fortalecer la amistad con tu mascota (MAT), permitiendo a los usuarios gestionar horarios y actividades personalizadas. Muchas personas experimentan dificultades para sacar a sus mascotas al parque o dedicarles tiempo suficiente debido a las exigencias laborales o distracciones cotidianas. Con Take Your Pet Out, buscamos abordar este problema de manera dinámica y sencilla, facilitando a los usuarios la organización de actividades para sus mascotas de una manera más efectiva."
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Take Your Pet Out (TYPO) es una aplicación diseñada para fortalecer la amistad con tu mascota (MAT), permitiendo a los usuarios gestionar horarios y actividades personalizadas. Muchas personas experimentan dificultades para sacar a sus mascotas al parque o dedicarles tiempo suficiente debido a las exigencias laborales o distracciones cotidianas. Con Take Your Pet Out, buscamos abordar este problema de manera dinámica y sencilla, facilitando a los usuarios la organización de actividades para sus mascotas de una manera más efectiva."
-                android:textSize="16sp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Propósito."
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Como equipo de desarrolladores, nuestro objetivo es abordar el desafío que enfrentan las personas con mascotas al recordar los horarios para sacarlas. Para lograrlo, nuestra aplicación está diseñada para gestionar de manera efectiva los horarios y actividades de los usuarios, proporcionando una solución práctica y conveniente para mejorar el cuidado y la atención a sus mascotas."
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Propósito."
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Alcance."
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Esta aplicación resulta sumamente beneficiosa para aquellas personas con agendas ocupadas. Les brinda la oportunidad de planificar horarios y actividades con sus mascotas, facilitándoles la organización de momentos para pasar tiempo de calidad con sus amigos peludos. Esto no solo contribuye a fortalecer el vínculo entre mascotas y propietarios, sino que también mejora significativamente la calidad de vida tanto para las mascotas como para sus dueños."
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Como equipo de desarrolladores, nuestro objetivo es abordar el desafío que enfrentan las personas con mascotas al recordar los horarios para sacarlas. Para lograrlo, nuestra aplicación está diseñada para gestionar de manera efectiva los horarios y actividades de los usuarios, proporcionando una solución práctica y conveniente para mejorar el cuidado y la atención a sus mascotas."
-                android:textSize="16sp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Alcance."
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Esta aplicación resulta sumamente beneficiosa para aquellas personas con agendas ocupadas. Les brinda la oportunidad de planificar horarios y actividades con sus mascotas, facilitándoles la organización de momentos para pasar tiempo de calidad con sus amigos peludos. Esto no solo contribuye a fortalecer el vínculo entre mascotas y propietarios, sino que también mejora significativamente la calidad de vida tanto para las mascotas como para sus dueños."
-                android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Descripcion General."
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Descripcion General."
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="219dp"
+                        android:padding="16dp"
+                        android:text="Con Take Your Pet Out, aspiramos a cambiar la percepción de sacar a las mascotas, transformándolo de una obligación a un momento de felicidad, convivencia y fortalecimiento de la amistad con nuestros amigos peludos. Estableciendo actividades y horarios personalizados, buscamos fomentar una conexión más significativa entre los dueños y sus mascotas. Nuestra meta es construir una amplia comunidad, donde nuestra aplicación sea reconocida por su contribución en mejorar la relación entre las personas y sus mascotas, cumpliendo efectivamente con su propósito."
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="219dp"
-                android:padding="16dp"
-                android:text="Con Take Your Pet Out, aspiramos a cambiar la percepción de sacar a las mascotas, transformándolo de una obligación a un momento de felicidad, convivencia y fortalecimiento de la amistad con nuestros amigos peludos. Estableciendo actividades y horarios personalizados, buscamos fomentar una conexión más significativa entre los dueños y sus mascotas. Nuestra meta es construir una amplia comunidad, donde nuestra aplicación sea reconocida por su contribución en mejorar la relación entre las personas y sus mascotas, cumpliendo efectivamente con su propósito."
-                android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
