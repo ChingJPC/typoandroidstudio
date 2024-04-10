@@ -2,6 +2,7 @@ package com.example.typoandroidstudio.network.MascotaAPIS;
 
 import com.example.typoandroidstudio.model.Actividad;
 import com.example.typoandroidstudio.model.Agendamiento;
+import com.example.typoandroidstudio.model.CantidadMascota;
 import com.example.typoandroidstudio.model.Logros;
 import com.example.typoandroidstudio.model.Mascota;
 import com.example.typoandroidstudio.model.Mascotalogros;
@@ -53,5 +54,6 @@ public interface MascotaAPIService {
 
     @GET("auth/reportes/{usuarioId}/cumplimiento-mensual")
     Call<Reportes> ReporteCumplimiento(@Header("Authorization") String Authorization, @Path("usuarioId") long usuarioId);
-
+    @GET("auth/Cantidadmascota")
+    Call<List<CantidadMascota>> getCantidadMascota(@Header("Authorization") String Authorization);
 }
