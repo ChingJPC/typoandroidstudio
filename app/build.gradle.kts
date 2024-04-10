@@ -37,6 +37,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.12")
     implementation("androidx.activity:activity:1.8.0")
+    implementation("org.quanqi:mpandroidchart:1.7.5")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

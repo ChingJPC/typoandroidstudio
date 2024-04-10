@@ -15,6 +15,10 @@ import com.example.typoandroidstudio.R;
 import com.example.typoandroidstudio.infomascota.AgendamientoMascotaActivity;
 import com.example.typoandroidstudio.model.Agendamiento;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AgendamientoAdapter extends BaseAdapter {
@@ -62,11 +66,28 @@ public class AgendamientoAdapter extends BaseAdapter {
 
         ImageView imageView = convertView.findViewById(R.id.imageViewChulo); // Supongamos que la imagen tiene el ID imageView
 
+        Calendar hoy = Calendar.getInstance();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date=null;
+        try {
+            date = formatter.parse(agendamiento.getFecha_Agendamiento());
+        } catch (ParseException e) {
+            System.out.printf("");
+        }
+        Calendar agenda = Calendar.getInstance();
+        agenda.setTime(date);
+
         // Mostrar la imagen y el texto mientras la actividad no esté cumplida (valor 0)
         if (agendamiento.isCumplida() == 0) {
             imageView.setVisibility(View.VISIBLE);
             textView27.setVisibility(View.VISIBLE);
         } else {
+            imageView.setVisibility(View.GONE);
+            textView27.setVisibility(View.GONE);
+        }
+
+        if (hoy.compareTo(agenda)>=0 && agendamiento.isCumplida() == 0) {
             imageView.setVisibility(View.GONE);
             textView27.setVisibility(View.GONE);
         }
@@ -79,11 +100,6 @@ public class AgendamientoAdapter extends BaseAdapter {
                 byte cumplida = 1; // O el valor que corresponda para indicar que la actividad está cumplida
                 if (context instanceof AgendamientoMascotaActivity) {
                     ((AgendamientoMascotaActivity) context).actualizarEstadoCumplida(agendamientoId, cumplida);
-                }
-                // Verificar si la actividad sigue sin cumplirse y ocultar la imagen correspondiente
-                if (agendamiento.isCumplida() == 0) {
-                    imageView.setVisibility(View.GONE);
-                    textView27.setVisibility(View.GONE);
                 }
                 // Ocultar la imagen y el texto al marcar como cumplida
                 imageView.setVisibility(View.GONE);

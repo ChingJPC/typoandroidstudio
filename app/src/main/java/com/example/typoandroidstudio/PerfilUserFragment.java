@@ -45,7 +45,6 @@ public class PerfilUserFragment extends Fragment {
         editTextApellido = view.findViewById(R.id.apellido);
         editTextTelefono = view.findViewById(R.id.numero);
         editTextFecha = view.findViewById(R.id.fecha);
-        editTextFecha = view.findViewById(R.id.fecha);
         textViewEmail = view.findViewById(R.id.email);
         buttonGuardar = view.findViewById(R.id.guardar);
 

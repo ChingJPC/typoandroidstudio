@@ -30,8 +30,6 @@ public interface LoginAPIService {
                             @Field("fecha_nacimiento") String fecha_nacimiento,
                             @Field("email") String email,
                             @Field("password") String password);
-        @GET("auth/Informacion")
-        Call<List<Mascota>> getMascota(@Header("")String auth);
 
         @FormUrlEncoded
         @PUT("auth/Usuario-user/{id}")

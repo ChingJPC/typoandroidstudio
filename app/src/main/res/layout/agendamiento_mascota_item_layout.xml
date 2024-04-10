@@ -104,7 +104,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Cumpliste la Actividad?"
+                    android:text="¿ Cumpliste la Actividad ?"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="20sp"
