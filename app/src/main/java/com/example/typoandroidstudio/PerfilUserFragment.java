@@ -79,20 +79,23 @@ public class PerfilUserFragment extends Fragment {
         user.setEmail(email);
 
         // Llamar al servicio API para actualizar los datos del usuario
-        Call<User> call = service.updateProfile("Bearer " + Datainfo.restLogin.getAccess_token(), user.getId(), name, apellido, telefono, fecha_nacimiento);
+        Call<User> call = service.updateProfile("Bearer " + Datainfo.restLogin.getAccess_token(), user.getId(), name, apellido, telefono, fecha_nacimiento, email);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     // Actualización exitosa, puedes mostrar un mensaje o realizar alguna acción adicional si lo deseas
+                    Toast.makeText(getContext(), "Perfil actualizado exitosamente", Toast.LENGTH_SHORT).show();
                 } else {
                     // Error en la actualización, puedes mostrar un mensaje de error
+                    Toast.makeText(getContext(), "Error al actualizar el perfil", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 // Error en la comunicación con el servidor, puedes mostrar un mensaje de error
+                Toast.makeText(getContext(), "Error de comunicación con el servidor", Toast.LENGTH_SHORT).show();
             }
         });
     }

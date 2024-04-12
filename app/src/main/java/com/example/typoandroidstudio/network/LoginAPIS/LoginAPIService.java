@@ -39,7 +39,8 @@ public interface LoginAPIService {
                 @Field("name") String name,
                 @Field("apellido") String apellido,
                 @Field("telefono") String telefono,
-                @Field("fecha_nacimiento") String fecha_nacimiento
+                @Field("fecha_nacimiento") String fecha_nacimiento,
+                @Field("email") String email
         );
 
         @GET("auth/logout")
