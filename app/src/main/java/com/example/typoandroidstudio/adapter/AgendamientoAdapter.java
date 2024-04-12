@@ -87,11 +87,6 @@ public class AgendamientoAdapter extends BaseAdapter {
             textView27.setVisibility(View.GONE);
         }
 
-        if (hoy.compareTo(agenda)>=0 && agendamiento.isCumplida() == 0) {
-            imageView.setVisibility(View.GONE);
-            textView27.setVisibility(View.GONE);
-        }
-
         ImageButton imageButton = convertView.findViewById(R.id.imageViewChulo);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +105,7 @@ public class AgendamientoAdapter extends BaseAdapter {
         });
 
         return convertView;
+
     }
 }
 

@@ -1,19 +1,21 @@
 package com.example.typoandroidstudio.model;
 
+import java.util.List;
+
 public class CantidadMascota {
-    String Tipo_Mascota;
+    private List<Tipomascota> Tipo_Mascota;
     long cantidad;
 
-    public CantidadMascota(String tipo_Mascota, long cantidad) {
+    public CantidadMascota(List<Tipomascota> tipo_Mascota, long cantidad) {
         Tipo_Mascota = tipo_Mascota;
         this.cantidad = cantidad;
     }
 
-    public String getTipo_Mascota() {
+    public List<Tipomascota> getTipo_Mascota() {
         return Tipo_Mascota;
     }
 
-    public void setTipo_Mascota(String tipo_Mascota) {
+    public void setTipo_Mascota(List<Tipomascota> tipo_Mascota) {
         Tipo_Mascota = tipo_Mascota;
     }
 
@@ -27,8 +29,8 @@ public class CantidadMascota {
 
     @Override
     public String toString() {
-        return "CatidadMascota{" +
-                "Tipo_Mascota='" + Tipo_Mascota + '\'' +
+        return "CantidadMascota{" +
+                "Tipo_Mascota=" + Tipo_Mascota +
                 ", cantidad=" + cantidad +
                 '}';
     }

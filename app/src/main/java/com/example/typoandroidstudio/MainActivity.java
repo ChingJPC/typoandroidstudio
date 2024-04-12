@@ -34,6 +34,7 @@ import com.example.typoandroidstudio.home.AboutUsFragmentActivity;
 import com.example.typoandroidstudio.home.HomeFragmentActivity;
 import com.example.typoandroidstudio.home.ReporteFragmentActivity;
 import com.example.typoandroidstudio.infomascota.AddMascotaActivity;
+import com.example.typoandroidstudio.infomascota.GraficaMascotasFragmentActivity;
 import com.example.typoandroidstudio.infomascota.IndexMascotaFragment;
 import com.example.typoandroidstudio.model.RestLogin;
 import com.example.typoandroidstudio.network.LoginAPIS.LoginAPIClient;
@@ -78,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragmentActivity());
                 } else if (menuItem.getItemId() == R.id.nav_about) {
                     replaceFragment(new AboutUsFragmentActivity());
-                } else if (menuItem.getItemId() == R.id.nav_settings) {
-                    replaceFragment(new ReporteFragmentActivity());
                 } else if (menuItem.getItemId() == R.id.nav_logout) {
                 logout();
                 }

@@ -7,13 +7,17 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    tools:layout_editor_absoluteX="-11dp"
+    tools:layout_editor_absoluteY="-9dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="391dp"
-        android:layout_height="357dp"
-        android:padding="16dp">
+        android:layout_height="250dp"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="4dp">
 
         <TextView
             android:id="@+id/reportTitle"
@@ -28,24 +32,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/idagendamiento"
-            android:layout_width="261dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="140dp"
-            android:textColor="#FF0000"
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:text="Fecha:"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView34"
-            app:layout_constraintTop_toBottomOf="@+id/reportTitle" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
         <TextView
             android:id="@+id/textView33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="112dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="108dp"
             android:text="ID:"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -53,28 +56,31 @@
             app:layout_constraintTop_toBottomOf="@+id/reportTitle" />
 
         <TextView
-            android:id="@+id/textView34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="Fecha:"
+            android:id="@+id/idagendamiento"
+            android:layout_width="261dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="22dp"
+            android:textColor="#FF0000"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/fechaagendamiento"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView33" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.894"
+            app:layout_constraintStart_toEndOf="@+id/textView34"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/fechaagendamiento"
             android:layout_width="257dp"
             android:layout_height="27dp"
-            android:layout_marginTop="208dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="4dp"
             android:textColor="#FF0000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView34"
-            app:layout_constraintTop_toBottomOf="@+id/reportTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/idagendamiento" />
 
         <ImageView
             android:id="@+id/imageView3"

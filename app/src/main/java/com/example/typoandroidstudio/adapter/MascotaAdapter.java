@@ -111,7 +111,6 @@ public class MascotaAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-
         return convertView;
     }
 }

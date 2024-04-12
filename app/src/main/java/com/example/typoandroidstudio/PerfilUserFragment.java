@@ -30,7 +30,7 @@ public class PerfilUserFragment extends Fragment {
     EditText editTextApellido;
     EditText editTextTelefono;
     EditText editTextFecha;
-    TextView textViewEmail;
+    EditText editTextEmail;
     Button buttonGuardar;
 
     User user;
@@ -45,7 +45,7 @@ public class PerfilUserFragment extends Fragment {
         editTextApellido = view.findViewById(R.id.apellido);
         editTextTelefono = view.findViewById(R.id.numero);
         editTextFecha = view.findViewById(R.id.fecha);
-        textViewEmail = view.findViewById(R.id.email);
+        editTextEmail = view.findViewById(R.id.email);
         buttonGuardar = view.findViewById(R.id.guardar);
 
         user = Datainfo.restLogin.getUser();
@@ -53,7 +53,7 @@ public class PerfilUserFragment extends Fragment {
         editTextUsername.setText(user.getName());
         editTextApellido.setText(user.getApellido());
         editTextTelefono.setText(user.getTelefono());
-        textViewEmail.setText(user.getEmail());
+        editTextEmail.setText(user.getEmail());
         editTextFecha.setText(user.getFecha_nacimiento());
 
         buttonGuardar.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +70,13 @@ public class PerfilUserFragment extends Fragment {
         String apellido = editTextApellido.getText().toString().trim();
         String telefono = editTextTelefono.getText().toString().trim();
         String fecha_nacimiento = editTextFecha.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
 
         user.setName(name);
         user.setApellido(apellido);
         user.setTelefono(telefono);
         user.setFecha_nacimiento(fecha_nacimiento);
+        user.setEmail(email);
 
         // Llamar al servicio API para actualizar los datos del usuario
         Call<User> call = service.updateProfile("Bearer " + Datainfo.restLogin.getAccess_token(), user.getId(), name, apellido, telefono, fecha_nacimiento);

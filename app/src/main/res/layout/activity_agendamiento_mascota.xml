@@ -9,8 +9,8 @@
 
     <ListView
         android:id="@+id/listagendamientos"
-        android:layout_width="410dp"
-        android:layout_height="685dp"
+        android:layout_width="376dp"
+        android:layout_height="634dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
@@ -22,12 +22,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:layout_marginBottom="20dp"
         android:text="TUS AGENDAMIENTOS"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/listagendamientos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -42,6 +46,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.177" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

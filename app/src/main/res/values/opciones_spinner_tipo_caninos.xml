@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ArrayRaza">
+        <item>----Caninos----</item>
+
+        <item>Labrador Retriever</item>
+        <item>Bulldog Francés</item>
+        <item>Golden Retriever</item>
+        <item>Chihuahua</item>
+        <item>Boxer</item>
+        <item>Pastor Alemán</item>
+        <item>Poodle (Caniche)</item>
+
+        <item>----Felinos----</item>
+
+        <item>Siamese</item>
+        <item>Maine Coon</item>
+        <item>Persian</item>
+        <item>Ragdoll</item>
+        <item>Bengal</item>
+        <item>Sphynx</item>
+
+        <item>----Aves----</item>
+
+        <item>Canario</item>
+        <item>Periquito</item>
+        <item>Cotorra</item>
+        <item>Agapornis</item>
+        <item>Calopsita</item>
+        <item>Loro</item>
+    </string-array>
+</resources>

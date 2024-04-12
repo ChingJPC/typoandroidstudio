@@ -23,7 +23,7 @@ import retrofit2.http.Path;
 public interface MascotaAPIService {
     @GET("auth/Informacion")
     Call<List<Mascota>> getAll(@Header("Authorization") String Authorization);
-    @GET("auth/logros")
+    @GET("auth/logros-user")
     Call<List<Logros>> getAllLogros(@Header("Authorization") String Authorization);
     @GET("auth/obtenerActividadesMascota/{id}")
     Call<List<Actividad>> getActividad(@Path("id") long idMascota, @Header("Authorization") String Authorization);
@@ -31,24 +31,17 @@ public interface MascotaAPIService {
     Call<List<Agendamiento>> getAgendamiento(@Header("Authorization") String Authorization, @Path("id") long id);
     @POST("auth/Agendamiento")
     Call<Actividad> addActividad(@Body RequestBody body, @Header("Authorization") String Authorization);
-
     @GET("auth/Tipomascota-user")
     Call<List<Tipomascota>> getTipos(@Header("Authorization") String Authorization);
-
     @GET("auth/Informacion/{id}")
     Call<Mascota> get(@Path("id") long id);
-
     @POST("auth/Informacion")
     Call<Mascota> add(@Header("Authorization") String Authorization, @Body Mascota mascota);
-
     @DELETE("auth/Informacion/{id}")
     Call<Mascota> delete(@Path("id") long id);
-
     @POST("auth/actualizar-tiempo-mascotas")
     Call<Void> actualizarTiempoMascotas(@Header("Authorization") String Authorization, @Body Agendamiento agendamiento);
-
     Call<Mascota> edit(@Path("id") long id, @Body Mascota mascota);
-
     @GET("auth/mascotas/{mascotaId}/logros")
     Call<List<Mascotalogros>> obtenerLogrosDeMascota(@Header("Authorization") String Authorization, @Path("mascotaId") long mascotaId);
 

@@ -21,6 +21,7 @@
         android:id="@+id/estadisticas"
         android:title="Statistics"
         android:icon="@drawable/estadisticas" />
+
     <item
         android:id="@+id/logros"
         android:title="Logros"
